@@ -1,35 +1,26 @@
-import axios from "axios";
-import { useState } from "react";
-import { usernames } from "../constants/username";
+import { useEffect, useState } from "react";
+import { users } from "../constants/username";
+import { getProfile } from "../services/warzone";
 
 export default function Home() {
-  const [usernames, setUsernames] = useState();
+  const [profiles, setProfiles] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      users.forEach((user) => {
+        getProfile({
+          username: user.username.replace("#", "%23"),
+          platform: user.platform,
+        }).then((response) => {
+          setProfiles((prevState) => {
+            return [...prevState, response];
+          });
+        });
+      });
+    };
+
+    fetchData();
+  }, []);
 
   return <h1>Apex sstats</h1>;
-}
-
-export async function getStaticProps() {
-  const options: any = {
-    method: "GET",
-    url: "https://call-of-duty-modern-warfare.p.rapidapi.com/warzone/apxteknyc%232849/battle",
-    headers: {
-      "x-rapidapi-key": "b15cd7fb11msh5f19678ca3765d1p15b250jsnf609e8b4b1fa",
-      "x-rapidapi-host": "call-of-duty-modern-warfare.p.rapidapi.com",
-    },
-  };
-
-  await axios
-    .request(options)
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-
-  return {
-    props: {
-      titleIdentities: null,
-    },
-  };
 }
