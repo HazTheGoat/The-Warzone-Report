@@ -10,3 +10,8 @@ export const getProfile = ({ username, platform }: UserHeader) => {
 
   return axios.request(options);
 };
+
+export const login = async () => {
+  const API = require("call-of-duty-api")({ platform: "battle" });
+  return await API.login("hazaraskari@gmail.com", "#VfTMC!%WanZ5B#");
+};
