@@ -11,16 +11,26 @@
     "@callofduty/api": "^1.3.5",
     "@callofduty/assets": "^1.3.5",
     "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "call-of-duty-api": "^1.3.4",
+    "cookie-parser": "^1.4.5",
+    "csurf": "^1.11.0",
+    "express": "^4.17.1",
     "form-data": "^4.0.0",
     "fs": "0.0.1-security",
     "net": "^1.0.2",
     "next": "10.2.3",
+    "node-fetch": "^2.6.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tls": "0.0.1",
     "unirest": "^0.6.0"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/csurf": "^1.11.1",
+    "@types/express": "^4.17.12",
+    "@types/node-fetch": "^2.5.10",
     "@types/react": "17.0.11",
     "typescript": "4.3.2"
   }
