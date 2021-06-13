@@ -14,3 +14,12 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+.card {
+	box-sizing: border-box;
+	display: inline-block;
+	margin: 0 20px 20px 20px;
+	padding: 20px;
+	border: 1px solid black;
+}

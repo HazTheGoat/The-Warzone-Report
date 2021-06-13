@@ -1,56 +1,127 @@
-import { useEffect } from "react";
-import fetch from "node-fetch";
-import express from "express";
-import { users } from "../constants/username";
+import { useEffect, useState } from "react";
+import { usersToFetch } from "../constants/username";
 
-var app = express();
+const Test = ({ fetchedUsers }: any) => {
+  const [users, setUsers] = useState<any[]>([]);
 
-const Test = ({ result }: any) => {
   useEffect(() => {
-    // var requestOptions: any = {
-    //   method: "GET",
-    //   redirect: "follow",
-    // };
-    // fetch("https://s.activision.com/activision/login", requestOptions)
-    //   .then((response) => console.log("first result", response.headers))
-    //   .then((result) => console.log("second result", result))
-    //   .catch((error) => console.log("error", error));
+    setUsers(JSON.parse(fetchedUsers));
   }, []);
-  return <h1>Hazar</h1>;
+
+  useEffect(() => {
+    console.log(users);
+  }, [users]);
+
+  return (
+    <>
+      <h1>Lifetime</h1>
+
+      {users.map((user, i) => (
+        <div className="card" key={i}>
+          <div>
+            <strong>Name</strong>: {user.username}
+          </div>
+          <div>
+            <strong>K/D</strong>: {user.lifetime.kdRatio.toFixed(2)}
+          </div>
+          <div>
+            <strong>Accuracy</strong>:{" "}
+            {(user.lifetime.accuracy * 100).toFixed(2)}%
+          </div>
+          <div>
+            <strong>Top 5</strong>: {user.lifetime.topFive}
+          </div>
+          <div>
+            <strong>Games played</strong>: {user.lifetime.gamesPlayed}
+          </div>
+          <div>
+            <strong>Wins</strong>: {user.lifetime.wins}
+          </div>
+        </div>
+      ))}
+
+      <h1>Weekly</h1>
+      {users.map((user, i) => (
+        <div className="card" key={i}>
+          <div>
+            <strong>Name</strong>: {user.username}
+          </div>
+          <div>
+            <strong>K/D</strong>: {user.weekly.kdRatio.toFixed(2)}{" "}
+            {user.weekly.kdRatio.toFixed(2) > user.lifetime.kdRatio.toFixed(2)
+              ? "going up"
+              : "going down"}
+          </div>
+          <div>
+            <strong>Accuracy</strong>: {(user.weekly.accuracy * 100).toFixed(2)}
+            %
+          </div>
+          <div>
+            <strong>Top 5</strong>: {user.weekly.topFive}
+          </div>
+          <div>
+            <strong>Games played</strong>: {user.weekly.gamesPlayed}
+          </div>
+          <div>
+            <strong>Wins</strong>: {user.weekly.wins}
+          </div>
+          <div>
+            <strong>Avg life</strong>:{" "}
+            {(user.weekly.avgLifeTime / 60).toFixed()} mins
+          </div>
+        </div>
+      ))}
+    </>
+  );
 };
 
 export async function getStaticProps() {
-  //   var requestOptions: any = {
-  //     method: "GET",
-  //     redirect: "follow",
-  //   };
+  const API = require("call-of-duty-api")({ platform: "battle" });
+  await API.login("hazaraskari@gmail.com", "#VfTMC!%WanZ5B#");
 
-  //   const result = await fetch(
-  //     "https://s.activision.com/activision/login",
-  //     requestOptions
-  //   ).then((res) => res);
-  //   const headers = result.headers;
-  //   const token = result.headers.get("set-cookie");
-  //   console.log(token);
-
-  try {
-    const API = require("call-of-duty-api")({ platform: "battle" });
-    const test = await API.login("hazaraskari@gmail.com", "#VfTMC!%WanZ5B#");
-
-    console.log("test: ", test);
-    users.forEach(async (user) => {
+  const mappedUsers = await usersToFetch.map(async (user) => {
+    try {
       let data = await API.MWwz(user.username, user.platform);
-      console.log(
-        `${user.username} has this in KD: `,
-        data.lifetime.mode.br.properties.kdRatio
-      );
-    });
-  } catch (err) {
-    console.log("error", err);
-  }
+
+      const {
+        weekly: {
+          all: { properties },
+        },
+        lifetime: {
+          all: {
+            properties: { accuracy },
+          },
+          mode: {
+            br: {
+              properties: { kdRatio, topFive, gamesPlayed, wins, avgLifeTime },
+            },
+          },
+        },
+      } = data;
+
+      return {
+        weekly: { ...properties, accuracy },
+        lifetime: {
+          kdRatio,
+          topFive,
+          gamesPlayed,
+          accuracy,
+          wins,
+          avgLifeTime,
+        },
+        username: user.name,
+      };
+    } catch (error) {}
+  });
+
+  const fetchedUsersAsJSON = await Promise.all(mappedUsers).then((x) =>
+    JSON.stringify(x)
+  );
 
   return {
-    props: {},
+    props: {
+      fetchedUsers: fetchedUsersAsJSON,
+    },
   };
 }
 
