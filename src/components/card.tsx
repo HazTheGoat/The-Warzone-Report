@@ -1,14 +1,19 @@
+import Image from "next/image"
 
 const Card = ({user, counter}:any) => {
-    console.log(user);
+    console.log("test", user);
     
     return ( 
       <div className="card">
         <div className="card-header">
-            <img src={`../avatar-pictures/avatar${counter+1}.png`} className="card-img-top" alt="..."></img>
+            <Image width="90" height="120" src={`/avatar-pictures/${user.avatar}.png`} className="card-Image-top" alt="..."/>
             <div className="header-text">
                 <h3>{(user.data.kdRatio).toFixed(2)}</h3>
-                <p>K/D Ratio</p>
+                <p>K/D Ratio </p>
+                {
+                  user.hasOwnProperty("positiveWeeklyKD") ? 
+                  <p>K/D arrow {user.positiveWeeklyKD ? "Up" : "Down"}</p> : null
+                  }
             </div>
             <h5 className="card-title">{user.username}</h5>
         </div>
@@ -33,6 +38,11 @@ const Card = ({user, counter}:any) => {
                         <p> {((user.data.accuracy) *100).toFixed(2)}%</p>
                         <p className="text-muted">Accuracy</p>
                       </div>
+                      { (user.data.gulagKills ? <div className="text-box">
+                        <p> {(user.data.gulagKills)}</p>
+                        <p className="text-muted">Gulag</p>
+                      </div> : null) 
+                      }
                     </div>
                 </div>
             </div>

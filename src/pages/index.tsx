@@ -2,8 +2,16 @@ import { useEffect, useState } from "react";
 import { usersToFetch } from "../constants/username";
 import Card from "../components/card"
 
+interface user {
+  username: string;
+  avatar: string;
+  weekly: any;
+  lifetime: any;
+
+}
+
 const Home = ({ fetchedUsers }: any) => {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<user[]>([]);
 
   useEffect(() => {
     setUsers(JSON.parse(fetchedUsers));
@@ -19,18 +27,18 @@ const Home = ({ fetchedUsers }: any) => {
       <h1 className="text-center">Lifetime</h1>
         <div className="row align-items-start">
           <div className="col">
-            {users.map((user, i) => {
-              const mappedUser = {data: user.lifetime, username: user.username}
-              return (<Card user={mappedUser} key={i} counter={i}/> )
+            {users.sort((a,b) => b.lifetime.kdRatio-a.lifetime.kdRatio).map((user, i) => {
+              const mappedUser = {data: user.lifetime, username: user.username, avatar: user.avatar}
+              return (<Card user={mappedUser} key={i} /> )
             })}
           </div>
         </div>
       </div>
       <div className="container-fluid">
         <h1 className="text-center">Weekly</h1>
-        {users.map((user, i) => {
-          const mappedUSer = {data: user.weekly, username: user.username}
-          return (<Card user={mappedUSer} key={i}/> )
+        {users.sort((a,b) => b.weekly.kdRatio-a.weekly.kdRatio).map((user, i) => {
+          const mappedUSer = {data: user.weekly, username: user.username, avatar: user.avatar, positiveWeeklyKD: user.weekly.kdRatio > user.lifetime.kdRatio}
+          return (<Card user={mappedUSer}  key={i}/> )
         })}
       </div>
     </div>
@@ -44,7 +52,8 @@ export async function getStaticProps() {
   const mappedUsers = await usersToFetch.map(async (user) => {
     try {
       let data = await API.MWwz(user.username, user.platform);
-
+      console.log("sjekker data", data.weekly);
+      
       const {
         weekly: {
           all: { properties },
@@ -72,11 +81,14 @@ export async function getStaticProps() {
           avgLifeTime,
         },
         username: user.name,
+        avatar: user.avatar
       };
     } catch (error) {}
   });
 
+  
   const fetchedUsersAsJSON = await Promise.all(mappedUsers).then((x) =>
+
     JSON.stringify(x)
   );
 
