@@ -2,12 +2,7 @@ body {
   background-color: #121212;
 }
 
-h1 {
-  color: rgba(232, 234, 237, 1);
-}
-
 .apex-card {
-  background-image: url(../public/card.png);
   background-size: contain;
 	background-repeat: no-repeat;
 	border-radius: 20px;
@@ -18,8 +13,194 @@ h1 {
 	position: relative;
 }
 
+.wood {
+	
+}
+.iron {
+	background-image: url(../public/cards/iron.png)
+}
+.bronze {
+	background-image: url(../public/cards/bronze.png)
+}
+.silver {
+	background-image: url(../public/cards/silver.png)
+}
+.gold {
+	background-image: url(../public/cards/gold.png)
+}
+.platinum {
+	background-image: url(../public/cards/platinum.png);
+	color: #fff;
+}
+
+.diamond {
+	color: #fff;
+	background-image: url(../public/cards/diamond.png);
+}
+.master {
+	background-image: url(../public/cards/master.png);
+	color: #fff;
+}
+.challenger {
+	color: #fff;
+	background-image: url(../public/cards/challenger.png);
+}
+.god {
+	background-image: url(../public/cards/god.png);
+}
+
+
+.god h1 {
+	color: red;
+}
+.challenger h1 {
+	color: orange
+} 
+
+.master h1, 
+.diamond h1, 
+.platinum h1 {
+	color: yellow;
+}
+
+.god .rank, 
+.challenger .rank, 
+.master .rank, 
+.diamond .rank, 
+.platinum .rank {
+	color: yellow;
+}
+
+.god .kd-text, 
+.challenger .kd-text, 
+.master .kd-text, 
+.diamond .kd-text, 
+.platinum .kd-text {
+	color: #ddd;
+}
+
+.kd {
+	position: absolute;
+    top: 130px;
+    left: 80px;
+}
+.kd h1{
+	margin-bottom: 0;
+}
+.kd-text {
+	font-size: 24px;
+    text-align: center;
+    font-weight: bolder;
+}
+.username  {
+	position: absolute;
+    top: 296px;
+    left: 50%;
+    font-size: 32px;
+    transform: translateX(-50%);
+	font-weight: 500;
+}
 .avatar {
 	position: absolute;
 	top: 60px;
     right: 70px;
 }
+
+.stats {
+	position: absolute;
+    top: 356px;
+    font-size: 18px;
+	font-weight: 500;
+
+}
+.left-stats {
+    left: 90px;
+}
+.right-stats {
+    right: 90px;
+}
+.rank {
+	position: absolute;
+    left: 50%;
+    top: 430px;
+    transform: translateX(-50%);
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+h1.lifetime {
+	color: #aaa;
+}
+h1.weekly {
+	color: #aaa;
+}
+
+.first-card {
+	color: #fff;
+	min-width: 200px;
+}
+
+svg {
+	color: #fff;
+	fill: #fff;
+}
+
+.page-header {
+	padding-top: 20px;
+	color: #fff;
+}
+
+
+@keyframes bounce {
+	0%{
+	  -moz-transform:translateX(0);
+	  -ms-transform: translateX(0);
+	  -webkit-transform: translateX(0);
+	  transform: translateX(0);
+	  opacity:0;
+	}
+	
+	20% {
+	  -moz-transform:translateX(15px);
+	  -ms-transform: translateX(15px);
+	  -webkit-transform: translateX(15px);
+	  transform: translateX(15px);
+	  opacity:0.8;
+	}
+	40% {
+	  -moz-transform:translateX(30px);
+	  -ms-transform: translateX(30px);
+	  -webkit-transform: translateX(30px);
+	  transform: translateX(30px);
+	  opacity:0.9;
+	}
+	60% {
+	  -moz-transform:translateX(40px);
+	  -ms-transform: translateX(40px);
+	  -webkit-transform: translateX(40px);
+	  transform: translateX(40px);
+	  opactity:1;
+	}
+	
+	80% {
+	  -moz-transform:translateX(60px);
+	  -ms-transform: translateX(60px);
+	  -webkit-transform: translateX(60px);
+	  transform: translateX(60px);
+	  opacity:0;
+	}
+	100% {
+	  -moz-transform:translateX(750px);
+	  -ms-transform: translateX(75px);
+	  -webkit-transform: translateX(75px);
+	  transform: translateX(75px);
+	  opacity:0;
+	}
+  }
+  
+  .bounce {
+  /*   transition: all 0.5s ease; */
+	-moz-animation: bounce 1.5s infinite;
+	-webkit-animation: bounce 1s infinite;
+	animation: bounce 1s infinite cubic-bezier(0, 0.0, 0.5, 0.7);
+  }

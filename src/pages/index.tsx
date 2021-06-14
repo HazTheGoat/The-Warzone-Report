@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { usersToFetch } from "../constants/username";
 import Card from "../components/card";
+import ScrollContainer from "react-indiana-drag-scroll";
+import Image from "next/image";
 
 interface user {
   username: string;
@@ -10,16 +12,16 @@ interface user {
 }
 
 enum CardType {
-  "wood" = 0.5, // < .5
-  "iron" = 0.7, // < .7
-  "bronze" = 0.8, // < .8
-  "silver" = 0.9, // < .9
-  "gold" = 1, // 1
-  "platinum" = 1.3, // 1.3
-  "diamond" = 1.5, // 1.5
-  "master" = 1.7, // 1.7
-  "challenger" = 2, // 2
-  "god" = 3, // 3
+  "wood" = 0.5,
+  "iron" = 0.7,
+  "bronze" = 0.8,
+  "silver" = 0.9,
+  "gold" = 1,
+  "platinum" = 1.3,
+  "diamond" = 1.5,
+  "master" = 1.6,
+  "challenger" = 2,
+  "god" = 3,
 }
 
 const Home = ({ fetchedUsers }: any) => {
@@ -32,9 +34,6 @@ const Home = ({ fetchedUsers }: any) => {
   useEffect(() => {}, [users]);
 
   const getRank = (kd: any) => {
-    console.log({ kd, enum: CardType.platinum });
-    console.log(CardType[CardType.platinum]);
-
     switch (true) {
       case kd < CardType.wood:
         return CardType[CardType.wood];
@@ -72,49 +71,88 @@ const Home = ({ fetchedUsers }: any) => {
   };
 
   return (
-    <div className="container-fluid">
-      <div className="">
-        <h1 className="text-center">Lifetime</h1>
-        <div className="row align-items-start">
-          {users
-            .sort((a, b) => b.lifetime.kdRatio - a.lifetime.kdRatio)
-            .map((user, i) => {
-              const mappedUser = {
-                data: user.lifetime,
-                username: user.username,
-                avatar: user.avatar,
-                rank: getRank(user.lifetime.kdRatio),
-              };
-              return (
-                <div className="col" key={i}>
-                  <Card user={mappedUser} />
+    <>
+      <div className="text-center page-header">
+        <h1>The APEX - The board of sweat</h1>
+      </div>
+      <div className="container-fluid container-bottom-half">
+        <div>
+          <ScrollContainer className="scroll-container">
+            <div className="d-flex justify-content-start align-items-center ">
+              <div className="first-card">
+                <h1 className="text-center lifetime">Weekly</h1>
+                <div>Scroll by mouse dragging</div>
+                <div className="svg-container bounce text-center">
+                  <Image
+                    width="50"
+                    height="50"
+                    layout={"fixed"}
+                    objectFit={"contain"}
+                    src={`/arrow-right.png`}
+                  />
                 </div>
-              );
-            })}
+              </div>
+              {users
+                .sort((a, b) => b.weekly.weeklyKdRatio - a.weekly.weeklyKdRatio)
+                .map((user, i) => {
+                  const mappedUSer = {
+                    data: user.weekly,
+                    username: user.username,
+                    avatar: user.avatar,
+                    positiveWeeklyKD:
+                      user.weekly.weeklyKdRatio > user.lifetime.lifetimeKdRatio,
+                    rank: getRank(user.weekly.weeklyKdRatio),
+                  };
+                  return (
+                    <div key={i}>
+                      <Card user={mappedUSer} />
+                    </div>
+                  );
+                })}
+            </div>
+          </ScrollContainer>
         </div>
       </div>
-      <div className="container-fluid">
-        <h1 className="text-center">Weekly</h1>
-        <div className="row align-items-start">
-          {users
-            .sort((a, b) => b.weekly.kdRatio - a.weekly.kdRatio)
-            .map((user, i) => {
-              const mappedUSer = {
-                data: user.weekly,
-                username: user.username,
-                avatar: user.avatar,
-                positiveWeeklyKD: user.weekly.kdRatio > user.lifetime.kdRatio,
-                rank: getRank(user.weekly.kdRatio),
-              };
-              return (
-                <div className="col" key={i}>
-                  <Card user={mappedUSer} />
+      <div className="container-fluid container-top-half">
+        <div>
+          <ScrollContainer className="scroll-container">
+            <div className="d-flex justify-content-start align-items-center ">
+              <div className="first-card">
+                <h1 className="text-center lifetime">Lifetime</h1>
+                <div>Scroll by mouse dragging</div>
+                <div className="svg-container bounce text-center">
+                  <Image
+                    width="50"
+                    height="50"
+                    layout={"fixed"}
+                    objectFit={"contain"}
+                    src={`/arrow-right.png`}
+                  />
                 </div>
-              );
-            })}
+              </div>
+              {users
+                .sort(
+                  (a, b) =>
+                    b.lifetime.lifetimeKdRatio - a.lifetime.lifetimeKdRatio
+                )
+                .map((user, i) => {
+                  const mappedUser = {
+                    data: user.lifetime,
+                    username: user.username,
+                    avatar: user.avatar,
+                    rank: getRank(user.lifetime.lifetimeKdRatio),
+                  };
+                  return (
+                    <div key={i}>
+                      <Card user={mappedUser} />
+                    </div>
+                  );
+                })}
+            </div>
+          </ScrollContainer>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -125,30 +163,41 @@ export async function getStaticProps() {
   const mappedUsers = await usersToFetch.map(async (user) => {
     try {
       let data = await API.MWwz(user.username, user.platform);
-
       const {
         weekly: {
-          all: { properties },
+          all: {
+            properties: {
+              accuracy: weeklyAccuracy,
+              kdRatio: weeklyKdRatio,
+              gulagKills,
+            },
+          },
         },
         lifetime: {
           all: {
-            properties: { accuracy },
+            properties: { accuracy: lifetimeAccuracy },
           },
           mode: {
             br: {
-              properties: { kdRatio, topFive, gamesPlayed, wins, avgLifeTime },
+              properties: {
+                kdRatio: lifetimeKdRatio,
+                topFive,
+                gamesPlayed,
+                wins,
+                avgLifeTime,
+              },
             },
           },
         },
       } = data;
 
       return {
-        weekly: { ...properties, accuracy },
+        weekly: { weeklyAccuracy, weeklyKdRatio, gulagKills },
         lifetime: {
-          kdRatio,
+          lifetimeKdRatio,
           topFive,
           gamesPlayed,
-          accuracy,
+          lifetimeAccuracy,
           wins,
           avgLifeTime,
         },
@@ -158,9 +207,9 @@ export async function getStaticProps() {
     } catch (error) {}
   });
 
-  const fetchedUsersAsJSON = await Promise.all(mappedUsers).then((x) =>
-    JSON.stringify(x)
-  );
+  const fetchedUsersAsJSON = await Promise.all(mappedUsers).then((x) => {
+    return JSON.stringify(x);
+  });
 
   return {
     props: {

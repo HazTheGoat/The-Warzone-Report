@@ -1,9 +1,8 @@
 import Image from "next/image";
 
 const Card = ({ user, counter }: any) => {
-  console.log(user);
   return (
-    <div className="apex-card">
+    <div className={`apex-card ${user.rank}`}>
       <div className="avatar">
         <Image
           width="160"
@@ -14,37 +13,55 @@ const Card = ({ user, counter }: any) => {
           alt="..."
         />
       </div>
-      <div>
-        <h3>{user.data.kdRatio.toFixed(2)}</h3>
-        <p>K/D Ratio </p>
-        {user.hasOwnProperty("positiveWeeklyKD") ? (
+      <div className="kd">
+        <h1>
+          {user.data.weeklyKdRatio?.toFixed(2) ||
+            user.data.lifetimeKdRatio?.toFixed(2)}
+        </h1>
+        <div className="kd-text">K/D</div>
+
+        {/* {user.hasOwnProperty("positiveWeeklyKD") ? (
           <p>K/D arrow {user.positiveWeeklyKD ? "Up" : "Down"}</p>
+        ) : null} */}
+      </div>
+      <div className="username">{user.username}</div>
+      <div className="rank">{user.rank}</div>
+      <div className="stats left-stats">
+        {user.data.wins ? (
+          <div>
+            <div>{user.data.wins} Wins</div>
+          </div>
+        ) : null}
+        {user.data.gamesPlayed ? (
+          <div>
+            <div>{user.data.gamesPlayed} Games</div>
+          </div>
+        ) : null}
+        {/* {user.data.gulagKills ? (
+          <div>
+            <div>{user.data.gulagKills} Gulag</div>
+          </div>
+        ) : null} */}
+      </div>
+
+      <div className="stats right-stats">
+        {user.data.weeklyAccuracy || user.data.lifetimeAccuracy ? (
+          <div>
+            <div>
+              {" "}
+              {(
+                user.data.weeklyAccuracy || user.data.lifetimeAccuracy * 100
+              ).toFixed(0)}
+              % Acc.
+            </div>
+          </div>
+        ) : null}
+        {user.data.topFive ? (
+          <div>
+            <strong>{user.data.topFive} Top 5</strong>
+          </div>
         ) : null}
       </div>
-      <h5>{user.username}</h5>
-      <h5>{user.rank}</h5>
-      <div>
-        <p>{user.data.wins}</p>
-        <p>Wins</p>
-      </div>
-      <div>
-        <p>{user.data.topFive}</p>
-        <p>Top Five</p>
-      </div>
-      <div>
-        <p>{user.data.gamesPlayed}</p>
-        <p>Games</p>
-      </div>
-      <div>
-        <p> {(user.data.accuracy * 100).toFixed(2)}%</p>
-        <p>Accuracy</p>
-      </div>
-      {user.data.gulagKills ? (
-        <div>
-          <p> {user.data.gulagKills}</p>
-          <p>Gulag</p>
-        </div>
-      ) : null}
     </div>
   );
 };
