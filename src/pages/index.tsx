@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { usersToFetch } from "../constants/username";
+import Card from "../components/card"
 
 const Home = ({ fetchedUsers }: any) => {
   const [users, setUsers] = useState<any[]>([]);
@@ -13,65 +14,26 @@ const Home = ({ fetchedUsers }: any) => {
   }, [users]);
 
   return (
-    <>
-      <h1>Lifetime</h1>
-
-      {users.map((user, i) => (
-        <div className="card" key={i}>
-          <div>
-            <strong>Name</strong>: {user.username}
-          </div>
-          <div>
-            <strong>K/D</strong>: {user.lifetime.kdRatio.toFixed(2)}
-          </div>
-          <div>
-            <strong>Accuracy</strong>:{" "}
-            {(user.lifetime.accuracy * 100).toFixed(2)}%
-          </div>
-          <div>
-            <strong>Top 5</strong>: {user.lifetime.topFive}
-          </div>
-          <div>
-            <strong>Games played</strong>: {user.lifetime.gamesPlayed}
-          </div>
-          <div>
-            <strong>Wins</strong>: {user.lifetime.wins}
+    <div className="container">
+      <div className="container-fluid">
+      <h1 className="text-center">Lifetime</h1>
+        <div className="row align-items-start">
+          <div className="col">
+            {users.map((user, i) => {
+              const mappedUser = {data: user.lifetime, username: user.username}
+              return (<Card user={mappedUser} key={i} counter={i}/> )
+            })}
           </div>
         </div>
-      ))}
-
-      <h1>Weekly</h1>
-      {users.map((user, i) => (
-        <div className="card" key={i}>
-          <div>
-            <strong>Name</strong>: {user.username}
-          </div>
-          <div>
-            <strong>K/D</strong>: {user.weekly.kdRatio.toFixed(2)}{" "}
-            {user.weekly.kdRatio.toFixed(2) > user.lifetime.kdRatio.toFixed(2)
-              ? "going up"
-              : "going down"}
-          </div>
-          <div>
-            <strong>Accuracy</strong>: {(user.weekly.accuracy * 100).toFixed(2)}
-            %
-          </div>
-          <div>
-            <strong>Top 5</strong>: {user.weekly.topFive}
-          </div>
-          <div>
-            <strong>Games played</strong>: {user.weekly.gamesPlayed}
-          </div>
-          <div>
-            <strong>Wins</strong>: {user.weekly.wins}
-          </div>
-          <div>
-            <strong>Avg life</strong>:{" "}
-            {(user.weekly.avgLifeTime / 60).toFixed()} mins
-          </div>
-        </div>
-      ))}
-    </>
+      </div>
+      <div className="container-fluid">
+        <h1 className="text-center">Weekly</h1>
+        {users.map((user, i) => {
+          const mappedUSer = {data: user.weekly, username: user.username}
+          return (<Card user={mappedUSer} key={i}/> )
+        })}
+      </div>
+    </div>
   );
 };
 
