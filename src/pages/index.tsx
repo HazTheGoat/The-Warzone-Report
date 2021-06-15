@@ -166,10 +166,17 @@ export async function getServerSideProps() {
       const {
         weekly: {
           all: {
-            properties: {
-              accuracy: weeklyAccuracy,
-              kdRatio: weeklyKdRatio,
-              gulagKills,
+            properties: { accuracy: weeklyAccuracy },
+          },
+          mode: {
+            br_all: {
+              properties: {
+                matchesPlayed: weeklyMatchesPlayed,
+                kdRatio: weeklyKdRatio,
+                gulagKills,
+                killsPerGame: weeklyKillsPerGame,
+                damageDone: weeklyDamageDone,
+              },
             },
           },
         },
@@ -192,7 +199,14 @@ export async function getServerSideProps() {
       } = data;
 
       return {
-        weekly: { weeklyAccuracy, weeklyKdRatio, gulagKills },
+        weekly: {
+          weeklyAccuracy,
+          weeklyKdRatio,
+          gulagKills,
+          weeklyMatchesPlayed,
+          weeklyKillsPerGame,
+          weeklyDamageDone,
+        },
         lifetime: {
           lifetimeKdRatio,
           topFive,

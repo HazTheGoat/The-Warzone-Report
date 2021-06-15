@@ -13,7 +13,7 @@ const Card = ({ user, counter }: any) => {
           alt="..."
         />
       </div>
-      <div className="kd">
+      <div className={`${!user.data.weeklyDamageDone ? "lifetime" : ""} kd`}>
         <h1>
           {user.data.weeklyKdRatio?.toFixed(2) ||
             user.data.lifetimeKdRatio?.toFixed(2)}
@@ -24,6 +24,19 @@ const Card = ({ user, counter }: any) => {
           <p>K/D arrow {user.positiveWeeklyKD ? "Up" : "Down"}</p>
         ) : null} */}
       </div>
+
+      {user.data.weeklyDamageDone ? (
+        <div className="dmg-pr-game">
+          <h2>
+            {user.data.weeklyDamageDone
+              ? (
+                  user.data.weeklyDamageDone / user.data.weeklyMatchesPlayed
+                ).toFixed(0)
+              : null}
+          </h2>
+          <div className="dmg-pr-game-text">Dmg/game</div>
+        </div>
+      ) : null}
       <div className="username">{user.username}</div>
       <div className="rank">{user.rank}</div>
       <div className="stats left-stats">
@@ -37,11 +50,16 @@ const Card = ({ user, counter }: any) => {
             <div>{user.data.gamesPlayed} Games</div>
           </div>
         ) : null}
-        {/* {user.data.gulagKills ? (
+        {user.data.gulagKills ? (
           <div>
-            <div>{user.data.gulagKills} Gulag</div>
+            <div>{user.data.gulagKills} Gulag W's</div>
           </div>
-        ) : null} */}
+        ) : null}
+        {user.data.weeklyMatchesPlayed ? (
+          <div>
+            <div>{user.data.weeklyMatchesPlayed} Games</div>
+          </div>
+        ) : null}
       </div>
 
       <div className="stats right-stats">
@@ -56,10 +74,9 @@ const Card = ({ user, counter }: any) => {
             </div>
           </div>
         ) : null}
-        {user.data.topFive ? (
-          <div>
-            <strong>{user.data.topFive} Top 5</strong>
-          </div>
+        {user.data.topFive ? <div>{user.data.topFive} Top 5</div> : null}
+        {user.data.weeklyKillsPerGame ? (
+          <div>{user.data.weeklyKillsPerGame.toFixed(0)} Kills/game</div>
         ) : null}
       </div>
     </div>
