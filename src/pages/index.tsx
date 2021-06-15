@@ -156,7 +156,7 @@ const Home = ({ fetchedUsers }: any) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const API = require("call-of-duty-api")({ platform: "battle" });
   await API.login("hazaraskari@gmail.com", "#VfTMC!%WanZ5B#");
 
