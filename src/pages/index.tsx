@@ -176,6 +176,10 @@ export async function getServerSideProps() {
                 gulagKills,
                 killsPerGame: weeklyKillsPerGame,
                 damageDone: weeklyDamageDone,
+                avgLifeTime: weeklyAvgLifeTime,
+                headshotPercentage: weeklyHeadshotPercentage,
+                damageTaken: weeklyDamageTaken,
+                Wallbangs: weeklyWallbangs
               },
             },
           },
@@ -206,6 +210,10 @@ export async function getServerSideProps() {
           weeklyMatchesPlayed,
           weeklyKillsPerGame,
           weeklyDamageDone,
+          weeklyAvgLifeTime,
+          weeklyHeadshotPercentage,
+          weeklyDamageTaken,
+          weeklyWallbangs
         },
         lifetime: {
           lifetimeKdRatio,

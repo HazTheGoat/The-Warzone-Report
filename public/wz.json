@@ -1464,10 +1464,10 @@
 				"matchXp": 9099,
 				"averageSpeedDuringMatch": 815.1628900000001,
 				"scoreXp": 8850,
-				"accuracy": 0.2408980582524272,
+				"accuracy": 0.2408980582524272, 
 				"losses": 4,
-				"wallBangs": 2,
-				"avgLifeTime": 25.5,
+				"wallBangs": 2, //Keep in weekly backside card
+				"avgLifeTime": 25.5, //Keep in weekly backside card
 				"shotsLanded": 397,
 				"objectiveMedalModeXAssaultScore": 9,
 				"objectiveMedalModeXDefendScore": 6,
@@ -1485,20 +1485,20 @@
 				"shotsMissed": 1251,
 				"scorePerGame": 2474,
 				"timePlayed": 2346,
-				"headshotPercentage": 0.18666666666666668,
+				"headshotPercentage": 0.18666666666666668, //Keep in weekly backside card
 				"executions": 0,
 				"matchesPlayed": 5,
 				"suicides": 0,
 				"seasonRank": 0,
 				"objectiveKothInObj": 172,
-				"wlRatio": 0.25,
+				"wlRatio": 0.25, //Keep in weekly backside card
 				"nearmisses": 909,
 				"percentTimeMoving": 384.58058,
 				"miscXp": 0,
 				"longestStreak": 5,
 				"damageDone": 10477,
 				"shotsFired": 1648,
-				"damageTaken": 10478
+				"damageTaken": 10478 //Keep in weekly backside card
 			}
 		},
 		"mode": {
