@@ -34,7 +34,7 @@ const Home = ({ fetchedUsers }: any) => {
               <div className="first-card">
                 <h1 className="text-center lifetime ">Weekly stats</h1>
                 <div>Scroll by mouse dragging</div>
-                <div className="svg-container bounce text-center">
+                <div className="svg-container bounce text-center t">
                   <Image
                     width="50"
                     height="50"
@@ -132,7 +132,7 @@ export async function getStaticProps() {
                 avgLifeTime: weeklyAvgLifeTime,
                 headshotPercentage: weeklyHeadshotPercentage,
                 damageTaken: weeklyDamageTaken,
-                Wallbangs: weeklyWallbangs
+                Wallbangs: weeklyWallbangs,
               },
             },
           },
@@ -166,7 +166,7 @@ export async function getStaticProps() {
           weeklyAvgLifeTime,
           weeklyHeadshotPercentage,
           weeklyDamageTaken,
-          weeklyWallbangs
+          weeklyWallbangs,
         },
         lifetime: {
           lifetimeKdRatio,
