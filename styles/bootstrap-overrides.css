@@ -13,6 +13,7 @@ body {
 	width: 400px;
 	height: 560px;
 	position: relative;
+	cursor: pointer;
 }
 
 .wood {
@@ -178,6 +179,7 @@ svg {
 .page-header {
 	padding-top: 40px;
 	color: #fff;
+	margin-bottom: 40px;
 }
 
 
@@ -227,7 +229,14 @@ svg {
 	  opacity:0;
 	}
   }
-  
+  a {
+	  color: unset;
+  }
+
+  a:hover {
+	color: unset;
+	animation: flicker 3s linear infinite;
+}
   .bounce {
   /*   transition: all 0.5s ease; */
 	-moz-animation: bounce 1.5s infinite;
@@ -235,16 +244,28 @@ svg {
 	animation: bounce 1s infinite cubic-bezier(0, 0.0, 0.5, 0.7);
   }
 
-
-
-  .neon{
+  .neon-header {
 	font-family: 'Monoton', cursive;
 	font-size: 48px;
-	color: #FFD5FF;
-	font-weight: 400;
-	margin-bottom: 40px;
 	letter-spacing: 18px;
+	}
+
+  .neon{
+	margin-bottom: 20px;
+	font-weight: 400;
+  }
+  
+  .neon-teal {
+	color: #FFD5FF;
 	text-shadow: 1px 0 4px #42dcdb, 2px 0 4px #42dcdb, 3px 0 4px #42dcdb, 2px 0 3px #42dcdb, 2px 3px 15px #42dcdb, 2px 0 15px, 5px 0 125px, 20px 0 200px #42dcdb, 40px 0 200px #42dcdb, 40px 0 310px #42dcdb, 40px 0 300px #42dcdb
+  }
+
+  .neon-orange {
+	text-shadow: 1px 0 4px #ff9f10, 2px 0 4px #ff9f10, 3px 0 4px #ff9f10, 2px 0 3px #ff9f10, 2px 3px 15px #ff9f10, 2px 0 15px, 5px 0 125px, 20px 0 200px #ff9f10, 40px 0 200px #ff9f10, 40px 0 310px #ff9f10, 40px 0 300px #ff9f10
+  }
+
+  .help {
+	color: #fff;
   }
   
   .flicker-slow{

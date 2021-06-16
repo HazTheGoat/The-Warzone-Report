@@ -16,12 +16,16 @@ const Home = ({ fetchedUsers }: any) => {
   return (
     <>
       <div className="text-center page-header">
-        {/* <h1 className="glow">The board of sweat</h1> */}
-        <h1 className="neon" data-text="U">
+        <div className="help neon neon-orange">
+          <a href="mailto: hazaraskari@gmail.com">
+            We can help you set up your very own
+          </a>
+        </div>
+        <h1 className="neon neon-header neon-teal" data-text="U">
           The W<span className="flicker-slow">a</span>rzone R
           <span className="flicker-fast">e</span>po
           <span className="flicker-very-slow">r</span>t
-        </h1>{" "}
+        </h1>
       </div>
       <div className="container-fluid container-bottom-half">
         <div>
@@ -111,7 +115,6 @@ export async function getServerSideProps() {
   const mappedUsers = await usersToFetch.map(async (user) => {
     try {
       let data = await API.MWwz(user.username, user.platform);
-      console.log(data.weekly.mode);
       const {
         weekly: {
           all: {
