@@ -28,7 +28,7 @@ const Home = ({ fetchedUsers }: any) => {
           <ScrollContainer className="scroll-container">
             <div className="d-flex justify-content-start align-items-center ">
               <div className="first-card">
-                <h1 className="text-center lifetime ">Weekly</h1>
+                <h1 className="text-center lifetime ">Weekly stats</h1>
                 <div>Scroll by mouse dragging</div>
                 <div className="svg-container bounce text-center">
                   <Image
@@ -66,7 +66,7 @@ const Home = ({ fetchedUsers }: any) => {
           <ScrollContainer className="scroll-container">
             <div className="d-flex justify-content-start align-items-center ">
               <div className="first-card">
-                <h1 className="text-center lifetime ">Lifetime</h1>
+                <h1 className="text-center lifetime ">Lifetime stats</h1>
                 <div>Scroll by mouse dragging</div>
                 <div className="svg-container bounce text-center">
                   <Image
@@ -111,6 +111,7 @@ export async function getServerSideProps() {
   const mappedUsers = await usersToFetch.map(async (user) => {
     try {
       let data = await API.MWwz(user.username, user.platform);
+      console.log(data.weekly.mode);
       const {
         weekly: {
           all: {
