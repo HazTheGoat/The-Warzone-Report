@@ -222,7 +222,7 @@ export async function getServerSideProps() {
   });
 
   const fetchedUsersAsJSON = await Promise.all(mappedUsers).then((x) => {
-    return JSON.stringify(x);
+    return JSON.stringify(x.filter((user) => user));
   });
 
   return {
