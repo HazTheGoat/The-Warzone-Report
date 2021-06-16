@@ -129,6 +129,10 @@ export async function getStaticProps() {
                 gulagKills,
                 killsPerGame: weeklyKillsPerGame,
                 damageDone: weeklyDamageDone,
+                avgLifeTime: weeklyAvgLifeTime,
+                headshotPercentage: weeklyHeadshotPercentage,
+                damageTaken: weeklyDamageTaken,
+                Wallbangs: weeklyWallbangs
               },
             },
           },
@@ -159,6 +163,10 @@ export async function getStaticProps() {
           weeklyMatchesPlayed,
           weeklyKillsPerGame,
           weeklyDamageDone,
+          weeklyAvgLifeTime,
+          weeklyHeadshotPercentage,
+          weeklyDamageTaken,
+          weeklyWallbangs
         },
         lifetime: {
           lifetimeKdRatio,
