@@ -1,20 +1,19 @@
+
+	@import url(https://fonts.googleapis.com/css?family=Monoton);
 body {
   background-color: #121212;
 }
 
 .apex-card {
   background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 20px;
-  margin: 5px;
-  padding: 10px;
-  width: 400px;
-  height: 560px;
-  position: relative;
-}
-
-.avatar {
-  z-index: 1;
+	background-repeat: no-repeat;
+	border-radius: 20px;
+	margin: 5px;
+	padding: 10px;
+	width: 400px;
+	height: 560px;
+	position: relative;
+	cursor: pointer;
 }
 
 .wood {
@@ -155,10 +154,13 @@ body {
 }
 
 h1.lifetime {
-  color: #aaa;
+	text-transform: uppercase;
+    font-size: 24px;
 }
 h1.weekly {
-  color: #aaa;
+	color: #aaa;
+	text-transform: uppercase;
+    font-size: 24px;
 }
 
 .first-card {
@@ -172,8 +174,9 @@ svg {
 }
 
 .page-header {
-  padding-top: 20px;
-  color: #fff;
+	padding-top: 40px;
+	color: #fff;
+	margin-bottom: 40px;
 }
 
 /* BACKSIDE CARD  */
@@ -252,33 +255,64 @@ svg {
     transform: translateX(30px);
     opacity: 0.9;
   }
-  60% {
-    -moz-transform: translateX(40px);
-    -ms-transform: translateX(40px);
-    -webkit-transform: translateX(40px);
-    transform: translateX(40px);
-    opactity: 1;
+  a {
+	  color: unset;
   }
 
-  80% {
-    -moz-transform: translateX(60px);
-    -ms-transform: translateX(60px);
-    -webkit-transform: translateX(60px);
-    transform: translateX(60px);
-    opacity: 0;
-  }
-  100% {
-    -moz-transform: translateX(750px);
-    -ms-transform: translateX(75px);
-    -webkit-transform: translateX(75px);
-    transform: translateX(75px);
-    opacity: 0;
-  }
+  a:hover {
+	color: unset;
+	animation: flicker 3s linear infinite;
 }
-
-.bounce {
+  .bounce {
   /*   transition: all 0.5s ease; */
-  -moz-animation: bounce 1.5s infinite;
-  -webkit-animation: bounce 1s infinite;
-  animation: bounce 1s infinite cubic-bezier(0, 0, 0.5, 0.7);
-}
+	-moz-animation: bounce 1.5s infinite;
+	-webkit-animation: bounce 1s infinite;
+	animation: bounce 1s infinite cubic-bezier(0, 0.0, 0.5, 0.7);
+  }
+
+  .neon-header {
+	font-family: 'Monoton', cursive;
+	font-size: 48px;
+	letter-spacing: 18px;
+	}
+
+  .neon{
+	margin-bottom: 20px;
+	font-weight: 400;
+  }
+  
+  .neon-teal {
+	color: #FFD5FF;
+	text-shadow: 1px 0 4px #42dcdb, 2px 0 4px #42dcdb, 3px 0 4px #42dcdb, 2px 0 3px #42dcdb, 2px 3px 15px #42dcdb, 2px 0 15px, 5px 0 125px, 20px 0 200px #42dcdb, 40px 0 200px #42dcdb, 40px 0 310px #42dcdb, 40px 0 300px #42dcdb
+  }
+
+  .neon-orange {
+	text-shadow: 1px 0 4px #ff9f10, 2px 0 4px #ff9f10, 3px 0 4px #ff9f10, 2px 0 3px #ff9f10, 2px 3px 15px #ff9f10, 2px 0 15px, 5px 0 125px, 20px 0 200px #ff9f10, 40px 0 200px #ff9f10, 40px 0 310px #ff9f10, 40px 0 300px #ff9f10
+  }
+
+  .help {
+	color: #fff;
+  }
+  
+  .flicker-slow{
+	animation: flicker 5s linear infinite;
+  }
+  
+  .flicker-very-slow{
+	animation: flicker 10s linear infinite;
+  }
+  
+  .flicker-fast{
+	animation: flicker 3s linear infinite;
+  }
+  
+  @keyframes flicker {
+	  0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+	  opacity: .99;
+		  
+	  }
+	  20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+		  opacity: 0.4;
+	  }
+  }
+  
