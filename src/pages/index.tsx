@@ -108,13 +108,14 @@ const Home = ({ fetchedUsers }: any) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const API = require("call-of-duty-api")({ platform: "battle" });
   await API.login(process.env.BATTLE_USERNAME, process.env.BATTLE_PW);
 
   const mappedUsers = await usersToFetch.map(async (user) => {
     try {
       let data = await API.MWwz(user.username, user.platform);
+
       const {
         weekly: {
           all: {
