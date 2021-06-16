@@ -16,14 +16,19 @@ const Home = ({ fetchedUsers }: any) => {
   return (
     <>
       <div className="text-center page-header">
-        <h1>The APEX - The board of sweat</h1>
+        {/* <h1 className="glow">The board of sweat</h1> */}
+        <h1 className="neon" data-text="U">
+          The W<span className="flicker-slow">a</span>rzone R
+          <span className="flicker-fast">e</span>po
+          <span className="flicker-very-slow">r</span>t
+        </h1>{" "}
       </div>
       <div className="container-fluid container-bottom-half">
         <div>
           <ScrollContainer className="scroll-container">
             <div className="d-flex justify-content-start align-items-center ">
               <div className="first-card">
-                <h1 className="text-center lifetime">Weekly</h1>
+                <h1 className="text-center lifetime ">Weekly</h1>
                 <div>Scroll by mouse dragging</div>
                 <div className="svg-container bounce text-center">
                   <Image
@@ -61,7 +66,7 @@ const Home = ({ fetchedUsers }: any) => {
           <ScrollContainer className="scroll-container">
             <div className="d-flex justify-content-start align-items-center ">
               <div className="first-card">
-                <h1 className="text-center lifetime">Lifetime</h1>
+                <h1 className="text-center lifetime ">Lifetime</h1>
                 <div>Scroll by mouse dragging</div>
                 <div className="svg-container bounce text-center">
                   <Image
