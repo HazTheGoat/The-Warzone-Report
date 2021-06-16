@@ -22,7 +22,7 @@ const Home = ({ fetchedUsers }: any) => {
           </a>
         </div>
         <h1 className="neon neon-header neon-teal" data-text="U">
-          The W<span className="flicker-slow">a</span>rzone R
+          The W<span className="flicker-slow t">a</span>rzone R
           <span className="flicker-fast">e</span>po
           <span className="flicker-very-slow">r</span>t
         </h1>
