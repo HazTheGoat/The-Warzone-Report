@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Card = ({ user, counter }: any) => {
+const Card = ({ user }: any) => {
   return (
     <div className={`apex-card ${user.rank}`}>
       <div className="avatar">

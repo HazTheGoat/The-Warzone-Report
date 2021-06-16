@@ -1,74 +1,17 @@
 import { useEffect, useState } from "react";
-import { usersToFetch } from "../constants/username";
 import Card from "../components/card";
 import ScrollContainer from "react-indiana-drag-scroll";
 import Image from "next/image";
-
-interface user {
-  username: string;
-  avatar: string;
-  weekly: any;
-  lifetime: any;
-}
-
-enum CardType {
-  "wood" = 0.5,
-  "iron" = 0.7,
-  "bronze" = 0.8,
-  "silver" = 0.9,
-  "gold" = 1,
-  "platinum" = 1.3,
-  "diamond" = 1.5,
-  "master" = 1.6,
-  "challenger" = 2,
-  "god" = 3,
-}
+import { User } from "../types/types";
+import { getRank } from "../helpers/helpers";
+import { usersToFetch } from "../constants/username";
 
 const Home = ({ fetchedUsers }: any) => {
-  const [users, setUsers] = useState<user[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     setUsers(JSON.parse(fetchedUsers));
   }, []);
-
-  useEffect(() => {}, [users]);
-
-  const getRank = (kd: any) => {
-    switch (true) {
-      case kd < CardType.wood:
-        return CardType[CardType.wood];
-
-      case kd < CardType.bronze && kd > CardType.wood:
-        return CardType[CardType.iron];
-
-      case kd < CardType.silver && kd > CardType.iron:
-        return CardType[CardType.bronze];
-
-      case kd < CardType.gold && kd > CardType.bronze:
-        return CardType[CardType.silver];
-
-      case kd < CardType.platinum && kd > CardType.silver:
-        return CardType[CardType.gold];
-
-      case kd < CardType.diamond && kd > CardType.gold:
-        return CardType[CardType.platinum];
-
-      case kd < CardType.master && kd > CardType.platinum:
-        return CardType[CardType.diamond];
-
-      case kd < CardType.challenger && kd > CardType.diamond:
-        return CardType[CardType.master];
-
-      case kd < CardType.god && kd > CardType.master:
-        return CardType[CardType.challenger];
-
-      case kd > CardType.god:
-        return CardType[CardType.god];
-
-      default:
-        return CardType[CardType.gold];
-    }
-  };
 
   return (
     <>
