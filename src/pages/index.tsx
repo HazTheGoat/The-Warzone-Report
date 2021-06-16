@@ -158,7 +158,7 @@ const Home = ({ fetchedUsers }: any) => {
 
 export async function getServerSideProps() {
   const API = require("call-of-duty-api")({ platform: "battle" });
-  await API.login("hazaraskari@gmail.com", "#VfTMC!%WanZ5B#");
+  await API.login(process.env.BATTLE_USERNAME, process.env.BATTLE_PW);
 
   const mappedUsers = await usersToFetch.map(async (user) => {
     try {
