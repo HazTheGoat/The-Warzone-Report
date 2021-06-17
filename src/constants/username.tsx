@@ -32,19 +32,13 @@ export const usersToFetch = [
   },
   { avatar: "Skjalg", name: "Skjalg", platform: "psn", username: "SKJALGG" },
   {
-    avatar: "Legendary",
-    name: "Legendary",
-    platform: "battle",
-    username: "legendarynor#2718",
-  },
-  {
     avatar: "Anders1337",
     name: "Anders1337",
     platform: "battle",
     username: "d0A#21433",
   },
   {
-    avatar: "Kdawgz",
+    avatar: "Qezzo",
     name: "Kdawgz",
     platform: "battle",
     username: "Kenbeast#2482",
