@@ -21,6 +21,11 @@ const FrontSideCard = ({ user, clickHandler }: any) => {
         </h1>
         <div className="kd-text">K/D</div>
       </div>
+      <div className="weekly-badge">
+        <div className="neon neon-orange">
+          S<span className="flicker flicker-slow">H</span>IELD
+        </div>
+      </div>
       {user.data.weeklyDamageDone ? (
         <div className="dmg-pr-game">
           <h2>

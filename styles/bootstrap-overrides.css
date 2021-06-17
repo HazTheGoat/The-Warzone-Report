@@ -120,6 +120,27 @@ body {
   text-align: center;
   font-weight: bolder;
 }
+
+.weekly-badge {
+	/* position: absolute;
+    top: 210px;
+    right: -90px;
+    text-align: center;
+    font-size: 40px;
+    transform: translateX(-50%); */
+	position: absolute;
+    top: 66px;
+    right: 40px;
+    text-align: center;
+    font-size: 25px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    transform: rotate(27deg);
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 40px;
+    width: 100px;
+}
+
 .username {
   position: absolute;
   top: 296px;
@@ -291,19 +312,37 @@ a:hover {
 }
 
 .neon-teal {
-  color: #ffd5ff;
-  text-shadow: 1px 0 4px #42dcdb, 2px 0 4px #42dcdb, 3px 0 4px #42dcdb,
+	color: #fff;
+	text-shadow: 1px 0 4px #42dcdb, 2px 0 4px #42dcdb, 3px 0 4px #42dcdb,
     2px 0 3px #42dcdb, 2px 3px 15px #42dcdb, 2px 0 15px, 5px 0 125px,
     20px 0 200px #42dcdb, 40px 0 200px #42dcdb, 40px 0 310px #42dcdb,
     40px 0 300px #42dcdb;
 }
 
 .neon-orange {
-  text-shadow: 1px 0 4px #ff9f10, 2px 0 4px #ff9f10, 3px 0 4px #ff9f10,
-    2px 0 3px #ff9f10, 2px 3px 15px #ff9f10, 2px 0 15px, 5px 0 125px,
-    20px 0 200px #ff9f10, 40px 0 200px #ff9f10, 40px 0 310px #ff9f10,
-    40px 0 300px #ff9f10;
+	color: #fff;
+	text-shadow: 1px 0 4px #fbff10, 2px 0 4px #fbff10, 3px 0 4px #fbff10,
+    2px 0 3px #fbff10, 2px 3px 15px #fbff10, 2px 0 15px, 5px 0 125px,
+    20px 0 200px #fbff10, 40px 0 200px #fbff10, 40px 0 310px #fbff10,
+    40px 0 300px #fbff10;
 }
+
+.neon-red {
+	color: #fff;
+  text-shadow: 1px 0 4px #ff1010, 2px 0 4px #ff1010, 3px 0 4px #ff1010,
+    2px 0 3px #ff1010, 2px 3px 15px #ff1010, 2px 0 15px, 5px 0 125px,
+    20px 0 200px #ff1010, 40px 0 200px #ff1010, 40px 0 310px #ff1010,
+    40px 0 300px #ff1010;
+}
+
+
+.neon-pink {
+	color: #fff;
+	text-shadow: 1px 0 4px #ff10f3, 2px 0 4px #ff10f3, 3px 0 4px #ff10f3,
+	  2px 0 3px #ff10f3, 2px 3px 15px #ff10f3, 2px 0 15px, 5px 0 125px,
+	  20px 0 200px #ff10f3, 40px 0 200px #ff10f3, 40px 0 310px #ff10f3,
+	  40px 0 300px #ff10f3;
+  }
 
 .help {
   color: #fff;
