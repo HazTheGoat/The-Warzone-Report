@@ -122,23 +122,41 @@ body {
 }
 
 .weekly-badge {
-	position: absolute;
-    top: 96px;
-    right: 20px;
-    text-align: center;
-    font-size: 25px;
-    transform: translateX(-50%);
-    transform: rotate(7deg);
-    background-color: rgba(0, 0, 0, 0.7);
-    height: 40px;
-    width: 100px;
+  position: absolute;
+  top: 96px;
+  right: 20px;
+  text-align: center;
+  font-size: 25px;
+  transform: translateX(-50%);
+  transform: rotate(7deg);
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 40px;
+  width: 100px;
 }
 
 .weekly-badge ~ .weekly-badge {
-	position: absolute;
-    top: 145px;
-    right: 10px;
-    transform: rotate(10deg);
+  position: absolute;
+  top: 145px;
+  right: 10px;
+  transform: rotate(10deg);
+}
+.weekly-badge ~ .weekly-badge ~ .weekly-badge {
+  position: absolute;
+  top: 190px;
+  right: 10px;
+  transform: rotate(13deg);
+}
+.weekly-badge ~ .weekly-badge ~ .weekly-badge ~ .weekly-badge {
+  position: absolute;
+  top: 240px;
+  right: 10px;
+  transform: rotate(8deg);
+}
+.weekly-badge ~ .weekly-badge ~ .weekly-badge ~ .weekly-badge ~ .weekly-badge {
+  position: absolute;
+  top: 400px;
+  right: 10px;
+  transform: rotate(10deg);
 }
 
 .username {
@@ -208,10 +226,10 @@ svg {
 
 .master .backside-card-body,
 .challenger .backside-card-body {
-	height: auto;
-	background-color: rgba(0, 0, 0, 0.3);
-	overflow: hidden;
-	box-shadow: 0px 0px 25px 25px rgba(0, 0, 0, 0.3);
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  box-shadow: 0px 0px 25px 25px rgba(0, 0, 0, 0.3);
 }
 
 .backside-card-body {
@@ -312,53 +330,52 @@ a:hover {
 }
 
 .neon-teal {
-	color: #fff;
-	text-shadow: 1px 0 4px #42dcdb, 2px 0 4px #42dcdb, 3px 0 4px #42dcdb,
+  color: #fff;
+  text-shadow: 1px 0 4px #42dcdb, 2px 0 4px #42dcdb, 3px 0 4px #42dcdb,
     2px 0 3px #42dcdb, 2px 3px 15px #42dcdb, 2px 0 15px, 5px 0 125px,
     20px 0 200px #42dcdb, 40px 0 200px #42dcdb, 40px 0 310px #42dcdb,
     40px 0 300px #42dcdb;
 }
 
 .neon-blue {
-	color: #9fc2ff;
-	text-shadow: 1px 0 4px #0059ff, 2px 0 4px #0059ff, 3px 0 4px #0059ff,
+  color: #9fc2ff;
+  text-shadow: 1px 0 4px #0059ff, 2px 0 4px #0059ff, 3px 0 4px #0059ff,
     2px 0 3px #0059ff, 2px 3px 15px #0059ff, 2px 0 15px, 5px 0 125px,
     20px 0 200px #0059ff, 40px 0 200px #0059ff, 40px 0 310px #0059ff,
     40px 0 300px #0059ff;
 }
 
 .neon-white {
-	color: #fff;
-	text-shadow: 1px 0 4px #ffffff, 2px 0 4px #ffffff, 3px 0 4px #ffffff,
+  color: #fff;
+  text-shadow: 1px 0 4px #ffffff, 2px 0 4px #ffffff, 3px 0 4px #ffffff,
     2px 0 3px #ffffff, 2px 3px 15px #ffffff, 2px 0 15px, 5px 0 125px,
     20px 0 200px #ffffff, 40px 0 200px #ffffff, 40px 0 310px #ffffff,
     40px 0 300px #ffffff;
 }
 
 .neon-red {
-	color: #ffadad;
+  color: #ffadad;
   text-shadow: 1px 0 4px #ff1010, 2px 0 4px #ff1010, 3px 0 4px #ff1010,
     2px 0 3px #ff1010, 2px 3px 15px #ff1010, 2px 0 15px, 5px 0 125px,
     20px 0 200px #ff1010, 40px 0 200px #ff1010, 40px 0 310px #ff1010,
     40px 0 300px #ff1010;
 }
 
-
 .neon-green {
-	color: #b3ffad;
-	text-shadow: 1px 0 4px #24ff10, 2px 0 4px #24ff10, 3px 0 4px #24ff10,
-	  2px 0 3px #24ff10, 2px 3px 15px #24ff10, 2px 0 15px, 5px 0 125px,
-	  20px 0 200px #24ff10, 40px 0 200px #24ff10, 40px 0 310px #24ff10,
-	  40px 0 300px #24ff10;
-  }
+  color: #b3ffad;
+  text-shadow: 1px 0 4px #24ff10, 2px 0 4px #24ff10, 3px 0 4px #24ff10,
+    2px 0 3px #24ff10, 2px 3px 15px #24ff10, 2px 0 15px, 5px 0 125px,
+    20px 0 200px #24ff10, 40px 0 200px #24ff10, 40px 0 310px #24ff10,
+    40px 0 300px #24ff10;
+}
 
 .neon-yellow {
-	color: #fff;
-	text-shadow: 1px 0 4px #fffb00, 2px 0 4px #fffb00, 3px 0 4px #fffb00,
-	  2px 0 3px #fffb00, 2px 3px 15px #fffb00, 2px 0 15px, 5px 0 125px,
-	  20px 0 200px #fffb00, 40px 0 200px #fffb00, 40px 0 310px #fffb00,
-	  40px 0 300px #fffb00;
-  }
+  color: #fff;
+  text-shadow: 1px 0 4px #fffb00, 2px 0 4px #fffb00, 3px 0 4px #fffb00,
+    2px 0 3px #fffb00, 2px 3px 15px #fffb00, 2px 0 15px, 5px 0 125px,
+    20px 0 200px #fffb00, 40px 0 200px #fffb00, 40px 0 310px #fffb00,
+    40px 0 300px #fffb00;
+}
 
 .help {
   color: #fff;
