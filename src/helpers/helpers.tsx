@@ -36,3 +36,63 @@ export const getRank = (kd: any) => {
       return CardType[CardType.gold];
   }
 };
+
+export const getBadges = (user: any, users: any[]) => {
+  const badges: any[] = [];
+
+  const usersCopy = [...users];
+  usersCopy.splice(
+    users.findIndex((x) => x.username === user.username),
+    1
+  );
+
+  if (
+    usersCopy.every(
+      (x) =>
+        user.weekly.weeklyDamageTaken / user.weekly.weeklyMatchesPlayed >
+        x.weekly.weeklyDamageTaken / x.weekly.weeklyMatchesPlayed
+    )
+  ) {
+    badges.push("SHIELD");
+  }
+
+  if (
+    usersCopy.every(
+      (x) =>
+        user.weekly.weeklyDistanceTraveled / user.weekly.weeklyMatchesPlayed >
+        x.weekly.weeklyDistanceTraveled / x.weekly.weeklyMatchesPlayed
+    )
+  ) {
+    badges.push("TRAVELER");
+  }
+
+  if (
+    usersCopy.every(
+      (x) =>
+        user.weekly.weeklyHeadshotPercentage > x.weekly.weeklyHeadshotPercentage
+    )
+  ) {
+    badges.push("DEADEYE");
+  }
+
+  if (
+    usersCopy.every(
+      (x) =>
+        user.weekly.weeklyDamageDone / user.weekly.weeklyMatchesPlayed >
+        x.weekly.weeklyDamageDone / x.weekly.weeklyMatchesPlayed
+    )
+  ) {
+    badges.push("PITBULL");
+  }
+  if (
+    usersCopy.every(
+      (x) =>
+        user.weekly.weeklyDamageDone / user.weekly.weeklyMatchesPlayed >
+        x.weekly.weeklyDamageDone / x.weekly.weeklyMatchesPlayed
+    )
+  ) {
+    badges.push("MARTYR");
+  }
+
+  return badges;
+};

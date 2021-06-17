@@ -2,6 +2,25 @@ import Image from "next/image";
 import { useState } from "react";
 
 const FrontSideCard = ({ user, clickHandler }: any) => {
+  console.log("USER: ", user.badges);
+  const getBadgeColor = (badge: string) => {
+    switch (badge) {
+      case "SHIELD":
+        return "blue";
+
+      case "TRAVELER":
+        return "green";
+
+      case "DEADEYE":
+        return "yellow";
+
+      case "PITBULL":
+        return "red";
+
+      case "MARTYR":
+        return "white";
+    }
+  };
   return (
     <div className={`apex-card ${user.rank}`} onClick={clickHandler}>
       <div className="avatar">
@@ -21,11 +40,26 @@ const FrontSideCard = ({ user, clickHandler }: any) => {
         </h1>
         <div className="kd-text">K/D</div>
       </div>
-      <div className="weekly-badge">
-        <div className="neon neon-orange">
-          S<span className="flicker flicker-slow">H</span>IELD
+
+      {user.badges?.map((badge: string) => (
+        <div className="weekly-badge">
+          <div className={`neon neon-${getBadgeColor(badge)}`}>
+            {Object.assign([], badge).map((letter: string, index: number) => (
+              <span
+                key={index}
+                className={
+                  index === Math.floor(Math.random() * 5)
+                    ? "flicker flicker-slow"
+                    : ""
+                }
+              >
+                {letter}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      ))}
+
       {user.data.weeklyDamageDone ? (
         <div className="dmg-pr-game">
           <h2>

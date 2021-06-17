@@ -3,7 +3,7 @@ import Card from "../components/card";
 import ScrollContainer from "react-indiana-drag-scroll";
 import Image from "next/image";
 import { User } from "../types/types";
-import { getRank } from "../helpers/helpers";
+import { getRank, getBadges } from "../helpers/helpers";
 import { usersToFetch } from "../constants/username";
 
 const Home = ({ fetchedUsers }: any) => {
@@ -54,6 +54,7 @@ const Home = ({ fetchedUsers }: any) => {
                     positiveWeeklyKD:
                       user.weekly.weeklyKdRatio > user.lifetime.lifetimeKdRatio,
                     rank: getRank(user.weekly.weeklyKdRatio),
+                    badges: getBadges(user, users),
                   };
                   return (
                     <div key={i}>
@@ -127,12 +128,15 @@ export async function getStaticProps() {
                 matchesPlayed: weeklyMatchesPlayed,
                 kdRatio: weeklyKdRatio,
                 gulagKills,
+                distanceTraveled: weeklyDistanceTraveled,
                 killsPerGame: weeklyKillsPerGame,
                 damageDone: weeklyDamageDone,
                 avgLifeTime: weeklyAvgLifeTime,
                 headshotPercentage: weeklyHeadshotPercentage,
                 damageTaken: weeklyDamageTaken,
                 Wallbangs: weeklyWallbangs,
+                assists: weeklyAssists,
+                deaths: weeklyDeaths,
               },
             },
           },
@@ -167,6 +171,9 @@ export async function getStaticProps() {
           weeklyHeadshotPercentage,
           weeklyDamageTaken,
           weeklyWallbangs,
+          weeklyAssists,
+          weeklyDistanceTraveled,
+          weeklyDeaths,
         },
         lifetime: {
           lifetimeKdRatio,

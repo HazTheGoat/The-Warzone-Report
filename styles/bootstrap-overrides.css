@@ -122,23 +122,23 @@ body {
 }
 
 .weekly-badge {
-	/* position: absolute;
-    top: 210px;
-    right: -90px;
-    text-align: center;
-    font-size: 40px;
-    transform: translateX(-50%); */
 	position: absolute;
-    top: 66px;
-    right: 40px;
+    top: 96px;
+    right: 20px;
     text-align: center;
     font-size: 25px;
-    -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-    transform: rotate(27deg);
+    transform: rotate(7deg);
     background-color: rgba(0, 0, 0, 0.7);
     height: 40px;
     width: 100px;
+}
+
+.weekly-badge ~ .weekly-badge {
+	position: absolute;
+    top: 145px;
+    right: 10px;
+    transform: rotate(10deg);
 }
 
 .username {
@@ -319,16 +319,24 @@ a:hover {
     40px 0 300px #42dcdb;
 }
 
-.neon-orange {
+.neon-blue {
+	color: #9fc2ff;
+	text-shadow: 1px 0 4px #0059ff, 2px 0 4px #0059ff, 3px 0 4px #0059ff,
+    2px 0 3px #0059ff, 2px 3px 15px #0059ff, 2px 0 15px, 5px 0 125px,
+    20px 0 200px #0059ff, 40px 0 200px #0059ff, 40px 0 310px #0059ff,
+    40px 0 300px #0059ff;
+}
+
+.neon-white {
 	color: #fff;
-	text-shadow: 1px 0 4px #fbff10, 2px 0 4px #fbff10, 3px 0 4px #fbff10,
-    2px 0 3px #fbff10, 2px 3px 15px #fbff10, 2px 0 15px, 5px 0 125px,
-    20px 0 200px #fbff10, 40px 0 200px #fbff10, 40px 0 310px #fbff10,
-    40px 0 300px #fbff10;
+	text-shadow: 1px 0 4px #ffffff, 2px 0 4px #ffffff, 3px 0 4px #ffffff,
+    2px 0 3px #ffffff, 2px 3px 15px #ffffff, 2px 0 15px, 5px 0 125px,
+    20px 0 200px #ffffff, 40px 0 200px #ffffff, 40px 0 310px #ffffff,
+    40px 0 300px #ffffff;
 }
 
 .neon-red {
-	color: #fff;
+	color: #ffadad;
   text-shadow: 1px 0 4px #ff1010, 2px 0 4px #ff1010, 3px 0 4px #ff1010,
     2px 0 3px #ff1010, 2px 3px 15px #ff1010, 2px 0 15px, 5px 0 125px,
     20px 0 200px #ff1010, 40px 0 200px #ff1010, 40px 0 310px #ff1010,
@@ -336,12 +344,20 @@ a:hover {
 }
 
 
-.neon-pink {
+.neon-green {
+	color: #b3ffad;
+	text-shadow: 1px 0 4px #24ff10, 2px 0 4px #24ff10, 3px 0 4px #24ff10,
+	  2px 0 3px #24ff10, 2px 3px 15px #24ff10, 2px 0 15px, 5px 0 125px,
+	  20px 0 200px #24ff10, 40px 0 200px #24ff10, 40px 0 310px #24ff10,
+	  40px 0 300px #24ff10;
+  }
+
+.neon-yellow {
 	color: #fff;
-	text-shadow: 1px 0 4px #ff10f3, 2px 0 4px #ff10f3, 3px 0 4px #ff10f3,
-	  2px 0 3px #ff10f3, 2px 3px 15px #ff10f3, 2px 0 15px, 5px 0 125px,
-	  20px 0 200px #ff10f3, 40px 0 200px #ff10f3, 40px 0 310px #ff10f3,
-	  40px 0 300px #ff10f3;
+	text-shadow: 1px 0 4px #fffb00, 2px 0 4px #fffb00, 3px 0 4px #fffb00,
+	  2px 0 3px #fffb00, 2px 3px 15px #fffb00, 2px 0 15px, 5px 0 125px,
+	  20px 0 200px #fffb00, 40px 0 200px #fffb00, 40px 0 310px #fffb00,
+	  40px 0 300px #fffb00;
   }
 
 .help {

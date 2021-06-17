@@ -4,6 +4,7 @@ import FrontSideCard from "./FrontSideCard";
 import BackSideCard from "./BackSideCard";
 
 const Card = ({ user }: any) => {
+  //   console.table({ username: user.username, badges: user.badges });
   const [isFlipped, setIsFlipped] = useState(false);
 
   const cardFlipHandler = () => {
