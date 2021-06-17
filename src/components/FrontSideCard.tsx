@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
+import ReactTooltip from "react-tooltip";
 
 const FrontSideCard = ({ user, clickHandler }: any) => {
   console.log("USER: ", user.badges);
@@ -33,6 +34,7 @@ const FrontSideCard = ({ user, clickHandler }: any) => {
           alt="..."
         />
       </div>
+
       <div className={`${!user.data.weeklyDamageDone ? "lifetime" : ""} kd`}>
         <h1>
           {user.data.weeklyKdRatio?.toFixed(2) ||
@@ -42,22 +44,28 @@ const FrontSideCard = ({ user, clickHandler }: any) => {
       </div>
 
       {user.badges?.map((badge: string) => (
-        <div className="weekly-badge">
-          <div className={`neon neon-${getBadgeColor(badge)}`}>
-            {Object.assign([], badge).map((letter: string, index: number) => (
-              <span
-                key={index}
-                className={
-                  index === Math.floor(Math.random() * 5)
-                    ? "flicker flicker-slow"
-                    : ""
-                }
-              >
-                {letter}
-              </span>
-            ))}
+        <a
+          data-for="main"
+          data-tip="Hello<br />multiline<br />tooltip"
+          data-iscapture="true"
+        >
+          <div className="weekly-badge">
+            <div className={`neon neon-${getBadgeColor(badge)}`}>
+              {Object.assign([], badge).map((letter: string, index: number) => (
+                <span
+                  key={index}
+                  className={
+                    index === Math.floor(Math.random() * 5)
+                      ? "flicker flicker-slow"
+                      : ""
+                  }
+                >
+                  {letter}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+        </a>
       ))}
 
       {user.data.weeklyDamageDone ? (

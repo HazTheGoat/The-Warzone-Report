@@ -43,4 +43,10 @@ export const usersToFetch = [
     platform: "battle",
     username: "d0A#21433",
   },
+  {
+    avatar: "Kdawgz",
+    name: "Kdawgz",
+    platform: "battle",
+    username: "Kenbeast#2482",
+  },
 ];
