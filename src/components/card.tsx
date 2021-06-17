@@ -7,7 +7,7 @@ const Card = ({ user }: any) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const cardFlipHandler = () => {
-    setIsFlipped((prevState) => !isFlipped);
+    setIsFlipped((prevState) => !prevState);
   };
 
   return (

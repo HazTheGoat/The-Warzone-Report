@@ -223,21 +223,21 @@
 			"br": {
 				"properties": {
 					"wins": 20,
-					"kills": 936, // keep this
-					"kdRatio": 1.6193771626297577, // keep this
+					"kills": 936,
+					"kdRatio": 1.6193771626297577,
 					"downs": 956,
 					"topTwentyFive": 169,
-					"topTen": 93, // keep this
+					"topTen": 93,
 					"contracts": 217,
 					"revives": 28,
 					"topFive": 56,
 					"score": 933650,
 					"timePlayed": 261365,
-					"gamesPlayed": 231, // keep this
+					"gamesPlayed": 231,
 					"tokens": 0,
 					"scorePerMinute": 214.3324469611463,
 					"cash": 0,
-					"deaths": 578 // keep this
+					"deaths": 578
 				}
 			},
 			"sd": {
@@ -1464,7 +1464,7 @@
 				"matchXp": 9099,
 				"averageSpeedDuringMatch": 815.1628900000001,
 				"scoreXp": 8850,
-				"accuracy": 0.2408980582524272, 
+				"accuracy": 0.2408980582524272,
 				"losses": 4,
 				"wallBangs": 2, //Keep in weekly backside card
 				"avgLifeTime": 25.5, //Keep in weekly backside card
@@ -1502,7 +1502,7 @@
 			}
 		},
 		"mode": {
-			"koth": {
+			"br_all": {
 				"properties": {
 					"kills": 75,
 					"medalXp": 7495,

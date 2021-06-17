@@ -2,15 +2,8 @@ import Image from "next/image";
 import { useState } from "react";
 
 const FrontSideCard = ({ user, clickHandler }: any) => {
-  const raiseClickHandler = () => {
-    clickHandler();
-  };
-
   return (
-    <div className={`apex-card ${user.rank}`}>
-      <button className="button-card" onClick={raiseClickHandler}>
-        DETAILS
-      </button>
+    <div className={`apex-card ${user.rank}`} onClick={clickHandler}>
       <div className="avatar">
         <Image
           width="160"

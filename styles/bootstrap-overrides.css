@@ -17,18 +17,23 @@ body {
 
 .wood {
 }
+
 .iron {
   background-image: url(../public/cards/iron.png);
 }
+
 .bronze {
   background-image: url(../public/cards/bronze.png);
 }
+
 .silver {
   background-image: url(../public/cards/silver.png);
 }
+
 .gold {
   background-image: url(../public/cards/gold.png);
 }
+
 .platinum {
   background-image: url(../public/cards/platinum.png);
   color: #fff;
@@ -180,11 +185,15 @@ svg {
 
 /* BACKSIDE CARD  */
 
+.master .backside-card-body,
+.challenger .backside-card-body {
+	height: auto;
+	background-color: rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	box-shadow: 0px 0px 25px 25px rgba(0, 0, 0, 0.3);
+}
+
 .backside-card-body {
-  height: auto;
-  background-color: rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  box-shadow: 0px 0px 25px 25px rgba(0, 0, 0, 0.3);
   width: 280px;
   position: absolute;
   left: 60px;

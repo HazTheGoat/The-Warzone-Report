@@ -1,10 +1,6 @@
 const BackSideCard = ({ user, clickHandler }: any) => {
-  const raiseClickHandler = () => {
-    clickHandler();
-  };
-
   return (
-    <div className={`apex-card ${user.rank}`}>
+    <div className={`apex-card ${user.rank}`} onClick={clickHandler}>
       <div className="backside-header">UNDER THE HOOD</div>
       <div className="backside-card-body">
         <div className="back-left-stats">
@@ -58,9 +54,6 @@ const BackSideCard = ({ user, clickHandler }: any) => {
           </div>
         </div>
       </div>
-      <button className="button-card" onClick={raiseClickHandler}>
-        RETURN
-      </button>
     </div>
   );
 };
