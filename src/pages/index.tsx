@@ -190,6 +190,7 @@ export async function getStaticProps() {
     props: {
       fetchedUsers: fetchedUsersAsJSON,
     },
+    revalidate: 1800,
   };
 }
 
