@@ -64,6 +64,10 @@ body {
   color: orange;
 }
 
+.tooltip {
+  font-size: 18px !important;
+}
+
 .master h1,
 .diamond h1,
 .platinum h1,

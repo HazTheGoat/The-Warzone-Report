@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
-import ReactTooltip from "react-tooltip";
+import Tooltip from "@material-ui/core/Tooltip";
+import withStyles from "@material-ui/styles/withStyles";
 
 const FrontSideCard = ({ user, clickHandler }: any) => {
   console.log("USER: ", user.badges);
@@ -22,6 +23,36 @@ const FrontSideCard = ({ user, clickHandler }: any) => {
         return "white";
     }
   };
+
+  const getTooltip = (badge: string) => {
+    if (badge === "SHIELD") {
+      return "This fucker is a beast! He is our bulletspunge. He has the most damage taken this week!";
+    }
+    if (badge === "TRAVELER") {
+      return "Enjoys long walks on the beach. Has explored all of Verdansk! This lad has covered most distances this week!";
+    }
+    if (badge === "DEADEYE") {
+      return "The enemy fears him. No one dares run in the open. Legend says henever misses a headshot!";
+    }
+    if (badge === "PITBULL") {
+      return "          He does not shy away from battle, he thrives in it. You can not escape his punishment. He has the most damage done this week!";
+    }
+    if (badge === "MARTYR") {
+      return "The good guy. The Canadian. Like Jesus he sacrifices himself for the squad. He has the most deaths this week.";
+    }
+    return "";
+  };
+
+  const HtmlTooltip = withStyles((theme) => ({
+    tooltip: {
+      backgroundColor: "rgba(0,0,0,0.7)",
+      color: "#fff",
+      maxWidth: 350,
+      fontSize: 18,
+      padding: 15,
+    },
+  }))(Tooltip);
+
   return (
     <div className={`apex-card ${user.rank}`} onClick={clickHandler}>
       <div className="avatar">
@@ -34,7 +65,6 @@ const FrontSideCard = ({ user, clickHandler }: any) => {
           alt="..."
         />
       </div>
-
       <div className={`${!user.data.weeklyDamageDone ? "lifetime" : ""} kd`}>
         <h1>
           {user.data.weeklyKdRatio?.toFixed(2) ||
@@ -43,24 +73,67 @@ const FrontSideCard = ({ user, clickHandler }: any) => {
         <div className="kd-text">K/D</div>
       </div>
 
-      {user.badges?.map((badge: string) => (
-        <div className="weekly-badge">
-          <div className={`neon neon-${getBadgeColor(badge)}`}>
-            {Object.assign([], badge).map((letter: string, index: number) => (
-              <span
-                key={index}
-                className={
-                  index === Math.floor(Math.random() * 5)
-                    ? "flicker flicker-slow"
-                    : ""
-                }
-              >
-                {letter}
-              </span>
-            ))}
+      {user.badges?.map((badge: string) => {
+        return (
+          <div className="weekly-badge">
+            <div className={`neon neon-${getBadgeColor(badge)}`}>
+              <HtmlTooltip title={getTooltip(badge)} placement="top">
+                <div>
+                  {Object.assign([], badge).map(
+                    (letter: string, index: number) => (
+                      <span
+                        key={index}
+                        className={
+                          index === Math.floor(Math.random() * 5)
+                            ? "flicker flicker-slow"
+                            : ""
+                        }
+                      >
+                        {letter}
+                      </span>
+                    )
+                  )}
+                </div>
+              </HtmlTooltip>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
+
+      {/* {user.badges?.map((badge: string) => (
+        <ReactTooltip className="tooltip" id={badge} type="dark" effect="solid">
+          {badge === "SHIELD" ? (
+            <span>
+              This fucker is a beast! He is our bulletspunge. He has the most
+              damage taken this week!
+            </span>
+          ) : null}
+          {badge === "TRAVELER" ? (
+            <span>
+              Enjoys long walks on the beach. Has explored all of Verdansk! This
+              lad has covered most distances this week!
+            </span>
+          ) : null}
+          {badge === "DEADEYE" ? (
+            <span>
+              The enemy fears him. No one dares run in the open. Legend says he
+              never misses a headshot!
+            </span>
+          ) : null}
+          {badge === "PITBULL" ? (
+            <span>
+              He does not shy away from battle, he thrives in it. You can not
+              escape his punishment. He has the most damage done this week!
+            </span>
+          ) : null}
+          {badge === "MARTYR" ? (
+            <span>
+              The good guy. The Canadian. Like Jesus he sacrifices himself for
+              the squad. He has the most deaths this week.{" "}
+            </span>
+          ) : null}
+        </ReactTooltip>
+      ))} */}
 
       {user.data.weeklyDamageDone ? (
         <div className="dmg-pr-game">
@@ -98,7 +171,6 @@ const FrontSideCard = ({ user, clickHandler }: any) => {
           </div>
         ) : null}
       </div>
-
       <div className="stats right-stats">
         {user.data.weeklyAccuracy || user.data.lifetimeAccuracy ? (
           <div>
