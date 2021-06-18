@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { mappedLifetimeUser, mappedWeeklyUser, User } from "../types/types";
-import {
-  getMappedWeeklyUsers,
-  getMappedLifetimeUsers,
-} from "../helpers/badges";
 import { usersToFetch } from "../constants/username";
 import PageHeader from "../components/Header";
 import WeeklyContainer from "../components/WeeklyContainer";
 import LifetimeContainer from "../components/LifetimeContainer";
-import { getMappedWarzoneData } from "../api/warzone-data-mapper";
+import { warzoneDataMapper } from "../api/warzone-data-mapper";
+import { getMappedLifetimeUsers, getMappedWeeklyUsers } from "../helpers/users";
 
 const Home = ({ fetchedUsers }: any) => {
   const [users, setUsers] = useState<User[]>([]);
@@ -56,7 +53,7 @@ export async function getStaticProps() {
   const mappedUsers = await usersToFetch.map(async (user) => {
     try {
       let data = await API.MWwz(user.username, user.platform);
-      return getMappedWarzoneData(data, user);
+      return warzoneDataMapper(data, user);
     } catch (error) {}
   });
 

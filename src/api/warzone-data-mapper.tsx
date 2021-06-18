@@ -1,6 +1,6 @@
 import { User } from "../types/types";
 
-export const getMappedWarzoneData = (data: any, user: any) => {
+export const warzoneDataMapper = (data: any, user: any) => {
   const {
     weekly: {
       all: {
