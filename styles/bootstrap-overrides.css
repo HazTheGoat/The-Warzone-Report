@@ -40,6 +40,12 @@ body {
   background-image: url(../public/cards/gold.png);
 }
 
+.wood {
+	background-color: #fff !important;
+    background-image: url(https://image.shutterstock.com/shutterstock/photos/1490213681/display_1500/stock-photo-pile-of-lumber-woods-in-warehouse-at-wood-factory-or-sawmill-1490213681.jpg);
+    background-size: cover !important;
+}
+
 .platinum {
   background-image: url(../public/cards/platinum.png);
   color: #fff;

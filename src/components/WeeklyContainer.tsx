@@ -1,4 +1,4 @@
-import Card from "../components/card";
+import Card from "./Card";
 import { User } from "../types/types";
 import ScrollInformation from "./ScrollInformation";
 

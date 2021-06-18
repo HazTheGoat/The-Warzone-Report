@@ -3,6 +3,13 @@ import { useState } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import withStyles from "@material-ui/styles/withStyles";
 import { Badge } from "../types/types";
+import {
+  deadeyeText,
+  martyrText,
+  pitbullText,
+  shieldText,
+  travelerText,
+} from "../constants/badge-text";
 
 const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
   // console.log("USER: ", user.badges);
@@ -27,19 +34,19 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
 
   const getTooltip = (badge: string) => {
     if (badge === Badge.shield) {
-      return "This fucker is a beast! He is our bulletspunge. He has the most damage taken this week!";
+      return shieldText;
     }
     if (badge === Badge.traveler) {
-      return "Enjoys long walks on the beach. Has explored all of Verdansk! This lad has covered most distances this week!";
+      return travelerText;
     }
     if (badge === Badge.deadeye) {
-      return "The enemy fears him. No one dares run in the open. Legend says henever misses a headshot!";
+      return deadeyeText;
     }
     if (badge === Badge.pitbull) {
-      return "          He does not shy away from battle, he thrives in it. You can not escape his punishment. He has the most damage done this week!";
+      return pitbullText;
     }
     if (badge === Badge.martyr) {
-      return "The good guy. The Canadian. Like Jesus he sacrifices himself for the squad. He has the most deaths this week.";
+      return martyrText;
     }
     return "";
   };
