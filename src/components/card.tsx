@@ -13,7 +13,11 @@ const Card = ({ user }: any) => {
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
-      <FrontSideCard user={user} clickHandler={cardFlipHandler} />
+      <FrontSideCard
+        isFlipped={isFlipped}
+        user={user}
+        clickHandler={cardFlipHandler}
+      />
       <BackSideCard user={user} clickHandler={cardFlipHandler} />
     </ReactCardFlip>
   );

@@ -4,7 +4,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import withStyles from "@material-ui/styles/withStyles";
 import { Badge } from "../types/types";
 
-const FrontSideCard = ({ user, clickHandler }: any) => {
+const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
   // console.log("USER: ", user.badges);
   const getBadgeColor = (badge: string) => {
     switch (badge) {
@@ -74,32 +74,33 @@ const FrontSideCard = ({ user, clickHandler }: any) => {
         <div className="kd-text">K/D</div>
       </div>
 
-      {user.badges?.map((badge: string) => {
-        return (
-          <div key={badge} className="weekly-badge">
-            <div className={`neon neon-${getBadgeColor(badge)}`}>
-              <HtmlTooltip title={getTooltip(badge)} placement="top">
-                <div>
-                  {Object.assign([], badge).map(
-                    (letter: string, index: number) => (
-                      <span
-                        key={index}
-                        className={
-                          index === Math.floor(Math.random() * 5)
-                            ? "flicker flicker-slow"
-                            : ""
-                        }
-                      >
-                        {letter}
-                      </span>
-                    )
-                  )}
-                </div>
-              </HtmlTooltip>
+      {!isFlipped &&
+        user.badges?.map((badge: string) => {
+          return (
+            <div key={badge} className="weekly-badge">
+              <div className={`neon neon-${getBadgeColor(badge)}`}>
+                <HtmlTooltip title={getTooltip(badge)} placement="top">
+                  <div>
+                    {Object.assign([], badge).map(
+                      (letter: string, index: number) => (
+                        <span
+                          key={index}
+                          className={
+                            index === Math.floor(Math.random() * 5)
+                              ? "flicker flicker-slow"
+                              : ""
+                          }
+                        >
+                          {letter}
+                        </span>
+                      )
+                    )}
+                  </div>
+                </HtmlTooltip>
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
 
       {user.data.weeklyDamageDone ? (
         <div className="dmg-pr-game">
