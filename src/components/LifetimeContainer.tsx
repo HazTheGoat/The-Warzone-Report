@@ -7,7 +7,7 @@ const LifetimeContainer = ({ users }: any) => {
     <div className="d-flex justify-content-start align-items-center ">
       <ScrollInformation periodText="Lifetime"></ScrollInformation>
 
-      {users.map((user: User, i: number) => (
+      {users.map((user: any, i: number) => (
         <div key={i}>
           <Card user={user} />
         </div>
