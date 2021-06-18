@@ -30,9 +30,9 @@ const Home = ({ fetchedUsers }: any) => {
     const mappedWeeklyUsers = weeklyDataMapper(
       hideJosef ? usersWithoutJosef : users
     );
-    const mappedLifetimeUsers = lifetimeDataMapper(
-      hideJosef ? usersWithoutJosef : users
-    );
+    // const mappedLifetimeUsers = lifetimeDataMapper(
+    //   hideJosef ? usersWithoutJosef : users
+    // );
     setWeeklyUser(mappedWeeklyUsers);
     // setLifetimeUser(mappedLifetimeUsers);
   }, [hideJosef]);
