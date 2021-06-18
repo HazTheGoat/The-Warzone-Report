@@ -1,4 +1,4 @@
-import Card from "./Card";
+// import Card from "./Card";
 import { User } from "../types/types";
 import ScrollInformation from "./ScrollInformation";
 
@@ -8,7 +8,7 @@ const LifetimeContainer = ({ users }: any) => {
       <ScrollInformation periodText="Lifetime"></ScrollInformation>
 
       {users.map((user: User, i: number) => (
-        <Card key={i} user={user} />
+        // <Card key={i} user={user} />
       ))}
     </div>
   );
