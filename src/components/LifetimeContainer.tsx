@@ -1,13 +1,11 @@
 import Card from "../components/card";
-import Image from "next/image";
-import { getRank, getBadges } from "../helpers/badges";
 import { User } from "../types/types";
 import ScrollInformation from "./ScrollInformation";
 
 const LifetimeContainer = ({ users }: any) => {
   return (
     <div className="d-flex justify-content-start align-items-center ">
-      <ScrollInformation></ScrollInformation>
+      <ScrollInformation periodText="Lifetime"></ScrollInformation>
 
       {users.map((user: User, i: number) => (
         <Card key={i} user={user} />

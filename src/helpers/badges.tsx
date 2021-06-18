@@ -1,5 +1,4 @@
 import { Badge, User } from "../types/types";
-import { getRank } from "./rank";
 
 export const getBadges = (user: any, users: any[]) => {
   const badges: any[] = [];
@@ -12,7 +11,7 @@ export const getBadges = (user: any, users: any[]) => {
 
   if (
     usersCopy.every(
-      (x) =>
+      (x: User) =>
         user.weekly.weeklyDamageTaken / user.weekly.weeklyMatchesPlayed >
         x.weekly.weeklyDamageTaken / x.weekly.weeklyMatchesPlayed
     )
@@ -22,7 +21,7 @@ export const getBadges = (user: any, users: any[]) => {
 
   if (
     usersCopy.every(
-      (x) =>
+      (x: User) =>
         user.weekly.weeklyDistanceTraveled / user.weekly.weeklyMatchesPlayed >
         x.weekly.weeklyDistanceTraveled / x.weekly.weeklyMatchesPlayed
     )
@@ -32,7 +31,7 @@ export const getBadges = (user: any, users: any[]) => {
 
   if (
     usersCopy.every(
-      (x) =>
+      (x: User) =>
         user.weekly.weeklyHeadshotPercentage > x.weekly.weeklyHeadshotPercentage
     )
   ) {
@@ -41,7 +40,7 @@ export const getBadges = (user: any, users: any[]) => {
 
   if (
     usersCopy.every(
-      (x) =>
+      (x: User) =>
         user.weekly.weeklyDamageDone / user.weekly.weeklyMatchesPlayed >
         x.weekly.weeklyDamageDone / x.weekly.weeklyMatchesPlayed
     )
@@ -50,7 +49,7 @@ export const getBadges = (user: any, users: any[]) => {
   }
   if (
     usersCopy.every(
-      (x) =>
+      (x: User) =>
         user.weekly.weeklyDamageDone / user.weekly.weeklyMatchesPlayed >
         x.weekly.weeklyDamageDone / x.weekly.weeklyMatchesPlayed
     )

@@ -6,10 +6,11 @@ import PageHeader from "../components/Header";
 import WeeklyContainer from "../components/WeeklyContainer";
 import LifetimeContainer from "../components/LifetimeContainer";
 import { warzoneDataMapper } from "../api/warzone-data-mapper";
-import { getMappedLifetimeUsers, getMappedWeeklyUsers } from "../helpers/users";
+import { weeklyDataMapper, lifetimeDataMapper } from "../helpers/users";
 
 const Home = ({ fetchedUsers }: any) => {
   const [users, setUsers] = useState<User[]>([]);
+  const [hideJosef, setHideJosef] = useState<boolean>(false);
   const [weeklyUser, setWeeklyUser] = useState<mappedWeeklyUser[]>([]);
   const [lifetimeUser, setLifetimeUser] = useState<mappedLifetimeUser[]>([]);
 
@@ -18,15 +19,34 @@ const Home = ({ fetchedUsers }: any) => {
   }, []);
 
   useEffect(() => {
-    const mappedWeeklyUsers = getMappedWeeklyUsers(users);
-    const mappedLifetimeUsers = getMappedLifetimeUsers(users);
+    const mappedWeeklyUsers = weeklyDataMapper(users);
+    const mappedLifetimeUsers = lifetimeDataMapper(users);
     setWeeklyUser(mappedWeeklyUsers);
     setLifetimeUser(mappedLifetimeUsers);
   }, [users]);
 
+  useEffect(() => {
+    const usersWithoutJosef = [...users].filter((x) => x.username !== "Josef");
+    const mappedWeeklyUsers = weeklyDataMapper(
+      hideJosef ? usersWithoutJosef : users
+    );
+    const mappedLifetimeUsers = lifetimeDataMapper(
+      hideJosef ? usersWithoutJosef : users
+    );
+    setWeeklyUser(mappedWeeklyUsers);
+    // setLifetimeUser(mappedLifetimeUsers);
+  }, [hideJosef]);
+
+  const hideJosefHandler = () => {
+    setHideJosef((prevState) => !prevState);
+  };
+
   return (
     <>
-      <PageHeader></PageHeader>
+      <PageHeader
+        clickHandler={hideJosefHandler}
+        hideJosef={hideJosef}
+      ></PageHeader>
       <div className="container-fluid container-bottom-half">
         <div>
           <ScrollContainer className="scroll-container">

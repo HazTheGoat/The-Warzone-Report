@@ -5,7 +5,7 @@ import ScrollInformation from "./ScrollInformation";
 const WeeklyContainer = ({ users }: any) => {
   return (
     <div className="d-flex justify-content-start align-items-center ">
-      <ScrollInformation></ScrollInformation>
+      <ScrollInformation periodText="Weekly"></ScrollInformation>
 
       {users.map((user: User, i: number) => (
         <Card key={i} user={user} />

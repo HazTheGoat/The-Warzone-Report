@@ -2,7 +2,7 @@ import { User } from "../types/types";
 import { getBadges } from "./badges";
 import { getRank } from "./rank";
 
-export const getMappedWeeklyUsers = (users: User[]) => {
+export const weeklyDataMapper = (users: User[]) => {
   return users
     .sort((a: User, b: User) => b.weekly.weeklyKdRatio - a.weekly.weeklyKdRatio)
     .map((user: User, i: number) => ({
@@ -16,7 +16,7 @@ export const getMappedWeeklyUsers = (users: User[]) => {
     }));
 };
 
-export const getMappedLifetimeUsers = (users: User[]) => {
+export const lifetimeDataMapper = (users: User[]) => {
   return users
     .sort(
       (a: User, b: User) =>
