@@ -6,8 +6,49 @@ export interface UserHeader {
 export interface User {
   username: string;
   avatar: string;
-  weekly: any;
-  lifetime: any;
+  weekly: WeeklyStats;
+  lifetime: LifetimeStats;
+}
+
+export interface LifetimeStats {
+  lifetimeKdRatio: number;
+  topFive: number;
+  gamesPlayed: number;
+  lifetimeAccuracy: number;
+  wins: number;
+  avgLifeTime: number;
+}
+
+export interface WeeklyStats {
+  weeklyAccuracy: number;
+  weeklyKdRatio: number;
+  gulagKills: number;
+  weeklyMatchesPlayed: number;
+  weeklyKillsPerGame: number;
+  weeklyDamageDone: number;
+  weeklyAvgLifeTime: number;
+  weeklyHeadshotPercentage: number;
+  weeklyDamageTaken: number;
+  weeklyWallbangs: number;
+  weeklyAssists: number;
+  weeklyDistanceTraveled: number;
+  weeklyDeaths: number;
+}
+
+export interface mappedWeeklyUser {
+  data: WeeklyStats;
+  username: string;
+  avatar: string;
+  positiveWeeklyKD: boolean;
+  rank: string;
+  badges: string[];
+}
+
+export interface mappedLifetimeUser {
+  data: LifetimeStats;
+  username: string;
+  avatar: string;
+  rank: string;
 }
 
 export enum CardType {

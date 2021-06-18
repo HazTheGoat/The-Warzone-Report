@@ -2,106 +2,49 @@ import { useEffect, useState } from "react";
 import Card from "../components/card";
 import ScrollContainer from "react-indiana-drag-scroll";
 import Image from "next/image";
-import { User } from "../types/types";
-import { getRank, getBadges } from "../helpers/helpers";
+import { mappedLifetimeUser, mappedWeeklyUser, User } from "../types/types";
+import {
+  getRank,
+  getBadges,
+  getMappedWeeklyUsers,
+  getMappedLifetimeUsers,
+} from "../helpers/helpers";
 import { usersToFetch } from "../constants/username";
+import PageHeader from "../components/Header";
+import WeeklyContainer from "../components/WeeklyContainer";
+import LifetimeContainer from "../components/LifetimeContainer";
 
 const Home = ({ fetchedUsers }: any) => {
   const [users, setUsers] = useState<User[]>([]);
+  const [weeklyUser, setWeeklyUser] = useState<mappedWeeklyUser[]>([]);
+  const [lifetimeUser, setLifetimeUser] = useState<mappedLifetimeUser[]>([]);
 
   useEffect(() => {
     setUsers(JSON.parse(fetchedUsers));
   }, []);
 
+  useEffect(() => {
+    const mappedWeeklyUsers = getMappedWeeklyUsers(users);
+    const mappedLifetimeUsers = getMappedLifetimeUsers(users);
+    setWeeklyUser(mappedWeeklyUsers);
+    setLifetimeUser(mappedLifetimeUsers);
+  }, [users]);
+
   return (
     <>
-      <div className="text-center page-header">
-        <div className="help neon neon-orange">
-          <a href="mailto: hazaraskari@gmail.com">
-            We can help you set up your very own
-          </a>
-        </div>
-        <h1 className="neon neon-header neon-teal" data-text="U">
-          The W<span className="flicker-slow t">a</span>rzone R
-          <span className="flicker-fast">e</span>po
-          <span className="flicker-very-slow">r</span>t
-        </h1>
-      </div>
+      <PageHeader></PageHeader>
       <div className="container-fluid container-bottom-half">
         <div>
           <ScrollContainer className="scroll-container">
-            <div className="d-flex justify-content-start align-items-center ">
-              <div className="first-card">
-                <h1 className="text-center lifetime ">Weekly stats</h1>
-                <div>Scroll by mouse dragging</div>
-                <div className="svg-container bounce text-center t">
-                  <Image
-                    width="50"
-                    height="50"
-                    layout={"fixed"}
-                    objectFit={"contain"}
-                    src={`/arrow-right.png`}
-                  />
-                </div>
-              </div>
-              {users
-                .sort((a, b) => b.weekly.weeklyKdRatio - a.weekly.weeklyKdRatio)
-                .map((user, i) => {
-                  const mappedUSer = {
-                    data: user.weekly,
-                    username: user.username,
-                    avatar: user.avatar,
-                    positiveWeeklyKD:
-                      user.weekly.weeklyKdRatio > user.lifetime.lifetimeKdRatio,
-                    rank: getRank(user.weekly.weeklyKdRatio),
-                    badges: getBadges(user, users),
-                  };
-                  return (
-                    <div key={i}>
-                      <Card user={mappedUSer} />
-                    </div>
-                  );
-                })}
-            </div>
+            <WeeklyContainer users={weeklyUser}></WeeklyContainer>
           </ScrollContainer>
         </div>
       </div>
+
       <div className="container-fluid container-top-half">
         <div>
           <ScrollContainer className="scroll-container">
-            <div className="d-flex justify-content-start align-items-center ">
-              <div className="first-card">
-                <h1 className="text-center lifetime ">Lifetime stats</h1>
-                <div>Scroll by mouse dragging</div>
-                <div className="svg-container bounce text-center">
-                  <Image
-                    width="50"
-                    height="50"
-                    layout={"fixed"}
-                    objectFit={"contain"}
-                    src={`/arrow-right.png`}
-                  />
-                </div>
-              </div>
-              {users
-                .sort(
-                  (a, b) =>
-                    b.lifetime.lifetimeKdRatio - a.lifetime.lifetimeKdRatio
-                )
-                .map((user, i) => {
-                  const mappedUser = {
-                    data: user.lifetime,
-                    username: user.username,
-                    avatar: user.avatar,
-                    rank: getRank(user.lifetime.lifetimeKdRatio),
-                  };
-                  return (
-                    <div key={i}>
-                      <Card user={mappedUser} />
-                    </div>
-                  );
-                })}
-            </div>
+            <LifetimeContainer users={lifetimeUser}></LifetimeContainer>
           </ScrollContainer>
         </div>
       </div>
@@ -185,7 +128,7 @@ export async function getStaticProps() {
         },
         username: user.name,
         avatar: user.avatar,
-      };
+      } as User;
     } catch (error) {}
   });
 

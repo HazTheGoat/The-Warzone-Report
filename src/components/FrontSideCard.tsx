@@ -4,7 +4,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import withStyles from "@material-ui/styles/withStyles";
 
 const FrontSideCard = ({ user, clickHandler }: any) => {
-  console.log("USER: ", user.badges);
+  // console.log("USER: ", user.badges);
   const getBadgeColor = (badge: string) => {
     switch (badge) {
       case "SHIELD":
@@ -75,7 +75,7 @@ const FrontSideCard = ({ user, clickHandler }: any) => {
 
       {user.badges?.map((badge: string) => {
         return (
-          <div className="weekly-badge">
+          <div key={badge} className="weekly-badge">
             <div className={`neon neon-${getBadgeColor(badge)}`}>
               <HtmlTooltip title={getTooltip(badge)} placement="top">
                 <div>
@@ -99,41 +99,6 @@ const FrontSideCard = ({ user, clickHandler }: any) => {
           </div>
         );
       })}
-
-      {/* {user.badges?.map((badge: string) => (
-        <ReactTooltip className="tooltip" id={badge} type="dark" effect="solid">
-          {badge === "SHIELD" ? (
-            <span>
-              This fucker is a beast! He is our bulletspunge. He has the most
-              damage taken this week!
-            </span>
-          ) : null}
-          {badge === "TRAVELER" ? (
-            <span>
-              Enjoys long walks on the beach. Has explored all of Verdansk! This
-              lad has covered most distances this week!
-            </span>
-          ) : null}
-          {badge === "DEADEYE" ? (
-            <span>
-              The enemy fears him. No one dares run in the open. Legend says he
-              never misses a headshot!
-            </span>
-          ) : null}
-          {badge === "PITBULL" ? (
-            <span>
-              He does not shy away from battle, he thrives in it. You can not
-              escape his punishment. He has the most damage done this week!
-            </span>
-          ) : null}
-          {badge === "MARTYR" ? (
-            <span>
-              The good guy. The Canadian. Like Jesus he sacrifices himself for
-              the squad. He has the most deaths this week.{" "}
-            </span>
-          ) : null}
-        </ReactTooltip>
-      ))} */}
 
       {user.data.weeklyDamageDone ? (
         <div className="dmg-pr-game">
