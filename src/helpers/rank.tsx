@@ -2,7 +2,7 @@ import { CardType } from "../types/types";
 
 export const getRank = (kd: any) => {
   switch (true) {
-    case kd < CardType.wood:
+    case kd < CardType.iron:
       return CardType[CardType.wood];
 
     case kd < CardType.bronze && kd > CardType.wood:
