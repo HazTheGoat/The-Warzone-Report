@@ -126,6 +126,7 @@ body {
 }
 
 .weekly-badge {
+	text-transform: uppercase;
   position: absolute;
   top: 96px;
   right: 20px;

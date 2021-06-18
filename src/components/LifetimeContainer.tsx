@@ -1,6 +1,6 @@
 import Card from "../components/card";
 import Image from "next/image";
-import { getRank, getBadges } from "../helpers/helpers";
+import { getRank, getBadges } from "../helpers/badges";
 import { User } from "../types/types";
 import ScrollInformation from "./ScrollInformation";
 

@@ -1,41 +1,5 @@
-import { CardType, User } from "../types/types";
-
-export const getRank = (kd: any) => {
-  switch (true) {
-    case kd < CardType.wood:
-      return CardType[CardType.wood];
-
-    case kd < CardType.bronze && kd > CardType.wood:
-      return CardType[CardType.iron];
-
-    case kd < CardType.silver && kd > CardType.iron:
-      return CardType[CardType.bronze];
-
-    case kd < CardType.gold && kd > CardType.bronze:
-      return CardType[CardType.silver];
-
-    case kd < CardType.platinum && kd > CardType.silver:
-      return CardType[CardType.gold];
-
-    case kd < CardType.diamond && kd > CardType.gold:
-      return CardType[CardType.platinum];
-
-    case kd < CardType.master && kd > CardType.platinum:
-      return CardType[CardType.diamond];
-
-    case kd < CardType.challenger && kd > CardType.diamond:
-      return CardType[CardType.master];
-
-    case kd < CardType.god && kd > CardType.master:
-      return CardType[CardType.challenger];
-
-    case kd > CardType.god:
-      return CardType[CardType.god];
-
-    default:
-      return CardType[CardType.gold];
-  }
-};
+import { Badge, User } from "../types/types";
+import { getRank } from "./rank";
 
 export const getBadges = (user: any, users: any[]) => {
   const badges: any[] = [];
@@ -53,7 +17,7 @@ export const getBadges = (user: any, users: any[]) => {
         x.weekly.weeklyDamageTaken / x.weekly.weeklyMatchesPlayed
     )
   ) {
-    badges.push("SHIELD");
+    badges.push(Badge.shield);
   }
 
   if (
@@ -63,7 +27,7 @@ export const getBadges = (user: any, users: any[]) => {
         x.weekly.weeklyDistanceTraveled / x.weekly.weeklyMatchesPlayed
     )
   ) {
-    badges.push("TRAVELER");
+    badges.push(Badge.traveler);
   }
 
   if (
@@ -72,7 +36,7 @@ export const getBadges = (user: any, users: any[]) => {
         user.weekly.weeklyHeadshotPercentage > x.weekly.weeklyHeadshotPercentage
     )
   ) {
-    badges.push("DEADEYE");
+    badges.push(Badge.deadeye);
   }
 
   if (
@@ -82,7 +46,7 @@ export const getBadges = (user: any, users: any[]) => {
         x.weekly.weeklyDamageDone / x.weekly.weeklyMatchesPlayed
     )
   ) {
-    badges.push("PITBULL");
+    badges.push(Badge.pitbull);
   }
   if (
     usersCopy.every(
@@ -91,7 +55,7 @@ export const getBadges = (user: any, users: any[]) => {
         x.weekly.weeklyDamageDone / x.weekly.weeklyMatchesPlayed
     )
   ) {
-    badges.push("MARTYR");
+    badges.push(Badge.martyr);
   }
 
   return badges;

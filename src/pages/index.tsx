@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
-import Card from "../components/card";
 import ScrollContainer from "react-indiana-drag-scroll";
-import Image from "next/image";
 import { mappedLifetimeUser, mappedWeeklyUser, User } from "../types/types";
 import {
-  getRank,
-  getBadges,
   getMappedWeeklyUsers,
   getMappedLifetimeUsers,
-} from "../helpers/helpers";
+} from "../helpers/badges";
 import { usersToFetch } from "../constants/username";
 import PageHeader from "../components/Header";
 import WeeklyContainer from "../components/WeeklyContainer";
 import LifetimeContainer from "../components/LifetimeContainer";
+import { getMappedWarzoneData } from "../api/warzone-data-mapper";
 
 const Home = ({ fetchedUsers }: any) => {
   const [users, setUsers] = useState<User[]>([]);
@@ -59,76 +56,7 @@ export async function getStaticProps() {
   const mappedUsers = await usersToFetch.map(async (user) => {
     try {
       let data = await API.MWwz(user.username, user.platform);
-
-      const {
-        weekly: {
-          all: {
-            properties: { accuracy: weeklyAccuracy },
-          },
-          mode: {
-            br_all: {
-              properties: {
-                matchesPlayed: weeklyMatchesPlayed,
-                kdRatio: weeklyKdRatio,
-                gulagKills,
-                distanceTraveled: weeklyDistanceTraveled,
-                killsPerGame: weeklyKillsPerGame,
-                damageDone: weeklyDamageDone,
-                avgLifeTime: weeklyAvgLifeTime,
-                headshotPercentage: weeklyHeadshotPercentage,
-                damageTaken: weeklyDamageTaken,
-                Wallbangs: weeklyWallbangs,
-                assists: weeklyAssists,
-                deaths: weeklyDeaths,
-              },
-            },
-          },
-        },
-        lifetime: {
-          all: {
-            properties: { accuracy: lifetimeAccuracy },
-          },
-          mode: {
-            br: {
-              properties: {
-                kdRatio: lifetimeKdRatio,
-                topFive,
-                gamesPlayed,
-                wins,
-                avgLifeTime,
-              },
-            },
-          },
-        },
-      } = data;
-
-      return {
-        weekly: {
-          weeklyAccuracy,
-          weeklyKdRatio,
-          gulagKills,
-          weeklyMatchesPlayed,
-          weeklyKillsPerGame,
-          weeklyDamageDone,
-          weeklyAvgLifeTime,
-          weeklyHeadshotPercentage,
-          weeklyDamageTaken,
-          weeklyWallbangs,
-          weeklyAssists,
-          weeklyDistanceTraveled,
-          weeklyDeaths,
-        },
-        lifetime: {
-          lifetimeKdRatio,
-          topFive,
-          gamesPlayed,
-          lifetimeAccuracy,
-          wins,
-          avgLifeTime,
-        },
-        username: user.name,
-        avatar: user.avatar,
-      } as User;
+      return getMappedWarzoneData(data, user);
     } catch (error) {}
   });
 

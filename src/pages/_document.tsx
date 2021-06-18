@@ -5,7 +5,6 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>The Warzone Report</title>
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}

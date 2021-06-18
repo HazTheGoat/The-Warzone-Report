@@ -63,3 +63,11 @@ export enum CardType {
   "challenger" = 2,
   "god" = 3,
 }
+
+export enum Badge {
+  pitbull = "pitbull",
+  deadeye = "deadeye",
+  shield = "shield",
+  martyr = "martyr",
+  traveler = "traveler",
+}

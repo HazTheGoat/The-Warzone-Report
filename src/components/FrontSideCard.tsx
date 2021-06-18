@@ -2,42 +2,43 @@ import Image from "next/image";
 import { useState } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import withStyles from "@material-ui/styles/withStyles";
+import { Badge } from "../types/types";
 
 const FrontSideCard = ({ user, clickHandler }: any) => {
   // console.log("USER: ", user.badges);
   const getBadgeColor = (badge: string) => {
     switch (badge) {
-      case "SHIELD":
+      case Badge.shield:
         return "blue";
 
-      case "TRAVELER":
+      case Badge.traveler:
         return "green";
 
-      case "DEADEYE":
+      case Badge.deadeye:
         return "yellow";
 
-      case "PITBULL":
+      case Badge.pitbull:
         return "red";
 
-      case "MARTYR":
+      case Badge.martyr:
         return "white";
     }
   };
 
   const getTooltip = (badge: string) => {
-    if (badge === "SHIELD") {
+    if (badge === Badge.shield) {
       return "This fucker is a beast! He is our bulletspunge. He has the most damage taken this week!";
     }
-    if (badge === "TRAVELER") {
+    if (badge === Badge.traveler) {
       return "Enjoys long walks on the beach. Has explored all of Verdansk! This lad has covered most distances this week!";
     }
-    if (badge === "DEADEYE") {
+    if (badge === Badge.deadeye) {
       return "The enemy fears him. No one dares run in the open. Legend says henever misses a headshot!";
     }
-    if (badge === "PITBULL") {
+    if (badge === Badge.pitbull) {
       return "          He does not shy away from battle, he thrives in it. You can not escape his punishment. He has the most damage done this week!";
     }
-    if (badge === "MARTYR") {
+    if (badge === Badge.martyr) {
       return "The good guy. The Canadian. Like Jesus he sacrifices himself for the squad. He has the most deaths this week.";
     }
     return "";

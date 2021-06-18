@@ -5,6 +5,7 @@ import "../../styles/bootstrap-overrides.css";
 import { useRouter } from "next/dist/client/router";
 import { useEffect } from "react";
 import * as ga from "../lib/ga";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -24,6 +25,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Head>
+        <title>The Warzone Report</title>
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
 }
 export default MyApp;
