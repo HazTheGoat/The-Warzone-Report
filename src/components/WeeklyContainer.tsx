@@ -1,5 +1,5 @@
-import Card from "./Card";
-import { User } from "../types/types";
+// import Card from "./Card";
+// import { User } from "../types/types";
 import ScrollInformation from "./ScrollInformation";
 
 const WeeklyContainer = ({ users }: any) => {
