@@ -8,7 +8,9 @@ const LifetimeContainer = ({ users }: any) => {
       <ScrollInformation periodText="Lifetime"></ScrollInformation>
 
       {users.map((user: User, i: number) => (
-        <Card key={i} user={user} />
+        <div key={i}>
+          <Card user={user} />
+        </div>
       ))}
     </div>
   );

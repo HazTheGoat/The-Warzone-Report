@@ -8,7 +8,9 @@ const WeeklyContainer = ({ users }: any) => {
       <ScrollInformation periodText="Weekly"></ScrollInformation>
 
       {users.map((user: User, i: number) => (
-        <Card key={i} user={user} />
+        <div key={i}>
+          <Card user={user} />
+        </div>
       ))}
     </div>
   );
