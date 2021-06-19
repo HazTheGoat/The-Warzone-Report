@@ -6,7 +6,10 @@ import PageHeader from "../components/Header";
 import WeeklyContainer from "../components/WeeklyContainer";
 import LifetimeContainer from "../components/LifetimeContainer";
 import { warzoneDataMapper } from "../api/warzone-data-mapper";
-import { weeklyDataMapper, lifetimeDataMapper } from "../helpers/users";
+import {
+  weeklyDataMapper,
+  lifetimeDataMapper,
+} from "../helpers/users-data-mapper";
 
 const Home = ({ fetchedUsers }: any) => {
   const [users, setUsers] = useState<User[]>([]);
@@ -21,6 +24,7 @@ const Home = ({ fetchedUsers }: any) => {
   useEffect(() => {
     const mappedWeeklyUsers = weeklyDataMapper(users);
     const mappedLifetimeUsers = lifetimeDataMapper(users);
+
     setWeeklyUser(mappedWeeklyUsers);
     setLifetimeUser(mappedLifetimeUsers);
   }, [users]);

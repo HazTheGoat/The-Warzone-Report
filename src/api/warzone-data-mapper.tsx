@@ -21,6 +21,7 @@ export const warzoneDataMapper = (data: any, user: any) => {
             Wallbangs: weeklyWallbangs,
             assists: weeklyAssists,
             deaths: weeklyDeaths,
+            losses: weeklyLosses,
           },
         },
       },
@@ -43,7 +44,7 @@ export const warzoneDataMapper = (data: any, user: any) => {
     },
   } = data;
 
-  return {
+  const mappedData: User = {
     weekly: {
       weeklyAccuracy,
       weeklyKdRatio,
@@ -69,5 +70,7 @@ export const warzoneDataMapper = (data: any, user: any) => {
     },
     username: user.name,
     avatar: user.avatar,
-  } as User;
+  };
+
+  return mappedData;
 };

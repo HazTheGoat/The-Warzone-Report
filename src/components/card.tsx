@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import FrontSideCard from "./FrontSideCard";
 import BackSideCard from "./BackSideCard";
 
-const Card = ({ user }: any) => {
-  const [isFlipped, setIsFlipped] = useState<boolean>(false);
+const Card = ({ user, timeout }: any) => {
+  const [isFlipped, setIsFlipped] = useState<boolean>(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsFlipped(false);
+    }, timeout);
+  }, []);
 
   const cardFlipHandler = () => {
     setIsFlipped((prevState) => !prevState);
