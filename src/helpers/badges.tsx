@@ -50,8 +50,8 @@ export const getBadges = (user: any, users: any[]) => {
   if (
     usersCopy.every(
       (x: User) =>
-        user.weekly.weeklyDamageDone / user.weekly.weeklyMatchesPlayed >
-        x.weekly.weeklyDamageDone / x.weekly.weeklyMatchesPlayed
+        user.weekly.weeklyDeaths / user.weekly.weeklyMatchesPlayed >
+        x.weekly.weeklyDeaths / x.weekly.weeklyMatchesPlayed
     )
   ) {
     badges.push(Badge.martyr);
