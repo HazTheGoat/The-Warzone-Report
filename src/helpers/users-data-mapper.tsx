@@ -15,18 +15,17 @@ export const weeklyDataMapper = (users: User[]) => {
     })
   );
 
-  // loop through each badge in the badges list
-  // for each badge, check first if the user has less than 2 badges, if true, continue, if false, break;
-  // check if the user meets the criteria for the badge. if so, apply the badge.
-
   const deletedUsersFromList: mappedWeeklyUser[] = [];
 
   Object.keys(Badge).forEach((badge) => {
     // pitbull i første omgang
     mappedUsers.forEach((user, i) => {
-      if (user.badges.length >= 2) {
+      if (user.badges.length >= 2 || user.data.weeklyMatchesPlayed <= 20) {
         deletedUsersFromList.push(user);
-
+        console.log("user: ", {
+          user: user.username,
+          matches: user.data.weeklyMatchesPlayed,
+        });
         mappedUsers.splice(
           mappedUsers.findIndex((x) => x.username === user.username),
           1
