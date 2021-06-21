@@ -118,9 +118,9 @@ body {
 }
 
 .kd-arrow {
-  position: absolute;
-  left: 80px;
-  top: 0;
+  padding-left: 8px;
+  position: relative;
+  display: inline-block;
 }
 
 .kd-text {
