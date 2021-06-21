@@ -105,6 +105,7 @@ body {
 
 .kd {
   position: absolute;
+  width: 110px;
   top: 110px;
   left: 80px;
 }
@@ -116,9 +117,15 @@ body {
   margin-bottom: 0;
 }
 
+.kd-arrow {
+  position: absolute;
+  left: 80px;
+  top: 0;
+}
+
 .kd-text {
   font-size: 24px;
-  text-align: center;
+  padding-left: 15px;
   font-weight: bolder;
 }
 .dmg-pr-game {
