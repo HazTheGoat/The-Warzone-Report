@@ -77,6 +77,24 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
         <h1>
           {user.data.weeklyKdRatio?.toFixed(2) ||
             user.data.lifetimeKdRatio?.toFixed(2)}
+          {user.data.weeklyDamageDone ? (
+            user.data.weeklyKdRatio > user.data.lifetimeKdRatio ? (
+              <Image
+                className="kd-arrow"
+                width="20"
+                height="20"
+                src={`/arrow-up.png`}
+              />
+            ) : (
+              <Image
+                className="kd-arrow"
+                width="20"
+                height="20"
+                objectFit={"contain"}
+                src={`/arrow-down.png`}
+              />
+            )
+          ) : null}
         </h1>
         <div className="kd-text">K/D</div>
       </div>
