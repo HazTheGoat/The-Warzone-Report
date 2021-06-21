@@ -1,61 +1,91 @@
-import { Badge, User } from "../types/types";
+import { Badge, mappedWeeklyUser, User } from "../types/types";
 
-export const getBadges = (user: any, users: any[]) => {
-  const badges: any[] = [];
+export const userBadgeMapper = (mappedUsers: mappedWeeklyUser[]) => {
+  const deletedUsersFromList: mappedWeeklyUser[] = [];
 
-  const usersCopy = [...users];
-  usersCopy.splice(
-    users.findIndex((x) => x.username === user.username),
-    1
-  );
+  Object.keys(Badge).forEach((badge) => {
+    // pitbull i første omgang
+    mappedUsers.forEach((user, i) => {
+      if (user.badges.length >= 2 || user.data.weeklyMatchesPlayed <= 20) {
+        deletedUsersFromList.push(user);
+        mappedUsers.splice(
+          mappedUsers.findIndex((x) => x.username === user.username),
+          1
+        );
 
-  if (
-    usersCopy.every(
-      (x: User) =>
-        user.weekly.weeklyDamageTaken / user.weekly.weeklyMatchesPlayed >
-        x.weekly.weeklyDamageTaken / x.weekly.weeklyMatchesPlayed
-    )
-  ) {
-    badges.push(Badge.shield);
-  }
+        return;
+      }
 
-  if (
-    usersCopy.every(
-      (x: User) =>
-        user.weekly.weeklyDistanceTraveled / user.weekly.weeklyMatchesPlayed >
-        x.weekly.weeklyDistanceTraveled / x.weekly.weeklyMatchesPlayed
-    )
-  ) {
-    badges.push(Badge.traveler);
-  }
+      switch (badge) {
+        case Badge.pitbull:
+          if (
+            mappedUsers.every(
+              (x: mappedWeeklyUser) =>
+                x.badges.length < 2 &&
+                user.data.weeklyDamageDone / user.data.weeklyMatchesPlayed >=
+                  x.data.weeklyDamageDone / x.data.weeklyMatchesPlayed
+            )
+          ) {
+            user.badges.push(badge);
+          }
+          break;
+        case Badge.deadeye:
+          if (
+            mappedUsers.every(
+              (x: mappedWeeklyUser) =>
+                x.badges.length < 2 &&
+                user.data.weeklyHeadshotPercentage >=
+                  x.data.weeklyHeadshotPercentage
+            )
+          ) {
+            user.badges.push(badge);
+          }
+          break;
+        case Badge.shield:
+          if (
+            mappedUsers.every(
+              (x: mappedWeeklyUser) =>
+                x.badges.length < 2 &&
+                user.data.weeklyDamageTaken / user.data.weeklyMatchesPlayed >=
+                  x.data.weeklyDamageTaken / x.data.weeklyMatchesPlayed
+            )
+          ) {
+            user.badges.push(badge);
+          }
+          break;
+        case Badge.martyr:
+          if (
+            mappedUsers.every(
+              (x: mappedWeeklyUser) =>
+                x.badges.length < 2 &&
+                user.data.weeklyDamageDone / user.data.weeklyMatchesPlayed >=
+                  x.data.weeklyDamageDone / x.data.weeklyMatchesPlayed
+            )
+          ) {
+            user.badges.push(badge);
+          }
+          break;
+        case Badge.traveler:
+          if (
+            mappedUsers.every(
+              (x: mappedWeeklyUser) =>
+                x.badges.length < 2 &&
+                user.data.weeklyDistanceTraveled /
+                  user.data.weeklyMatchesPlayed >=
+                  x.data.weeklyDistanceTraveled / x.data.weeklyMatchesPlayed
+            )
+          ) {
+            user.badges.push(badge);
+          }
+          break;
+      }
+    });
+  });
 
-  if (
-    usersCopy.every(
-      (x: User) =>
-        user.weekly.weeklyHeadshotPercentage > x.weekly.weeklyHeadshotPercentage
-    )
-  ) {
-    badges.push(Badge.deadeye);
-  }
-
-  if (
-    usersCopy.every(
-      (x: User) =>
-        user.weekly.weeklyDamageDone / user.weekly.weeklyMatchesPlayed >
-        x.weekly.weeklyDamageDone / x.weekly.weeklyMatchesPlayed
-    )
-  ) {
-    badges.push(Badge.pitbull);
-  }
-  if (
-    usersCopy.every(
-      (x: User) =>
-        user.weekly.weeklyDeaths / user.weekly.weeklyMatchesPlayed >
-        x.weekly.weeklyDeaths / x.weekly.weeklyMatchesPlayed
-    )
-  ) {
-    badges.push(Badge.martyr);
-  }
-
-  return badges;
+  return mappedUsers
+    .concat(deletedUsersFromList)
+    .sort(
+      (a: mappedWeeklyUser, b: mappedWeeklyUser) =>
+        b.data.weeklyKdRatio - a.data.weeklyKdRatio
+    );
 };

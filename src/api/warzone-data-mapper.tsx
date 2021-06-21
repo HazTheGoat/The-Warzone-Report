@@ -18,7 +18,7 @@ export const warzoneDataMapper = (data: any, user: any) => {
             avgLifeTime: weeklyAvgLifeTime,
             headshotPercentage: weeklyHeadshotPercentage,
             damageTaken: weeklyDamageTaken,
-            Wallbangs: weeklyWallbangs,
+            wallBangs: weeklyWallbangs,
             assists: weeklyAssists,
             deaths: weeklyDeaths,
             losses: weeklyLosses,
