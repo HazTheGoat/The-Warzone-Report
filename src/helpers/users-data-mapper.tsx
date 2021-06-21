@@ -1,5 +1,5 @@
-import { Badge, mappedWeeklyUser, User } from "../types/types";
-import { getBadges } from "./badges";
+import { mappedWeeklyUser, User } from "../types/types";
+import { userBadgeMapper } from "./badges";
 import { getRank } from "./rank";
 
 export const weeklyDataMapper = (users: User[]) => {
@@ -15,102 +15,7 @@ export const weeklyDataMapper = (users: User[]) => {
     })
   );
 
-  const deletedUsersFromList: mappedWeeklyUser[] = [];
-
-  Object.keys(Badge).forEach((badge) => {
-    // pitbull i første omgang
-    mappedUsers.forEach((user, i) => {
-      if (user.badges.length >= 2 || user.data.weeklyMatchesPlayed <= 20) {
-        deletedUsersFromList.push(user);
-        console.log("user: ", {
-          user: user.username,
-          matches: user.data.weeklyMatchesPlayed,
-        });
-        mappedUsers.splice(
-          mappedUsers.findIndex((x) => x.username === user.username),
-          1
-        );
-
-        return;
-      }
-
-      switch (badge) {
-        case Badge.pitbull:
-          if (
-            mappedUsers.every(
-              (x: mappedWeeklyUser) =>
-                x.badges.length < 2 &&
-                user.data.weeklyDamageDone / user.data.weeklyMatchesPlayed >=
-                  x.data.weeklyDamageDone / x.data.weeklyMatchesPlayed
-            )
-          ) {
-            console.log({ user: user.username, badge });
-            user.badges.push(badge);
-          }
-          break;
-        case Badge.deadeye:
-          if (
-            mappedUsers.every(
-              (x: mappedWeeklyUser) =>
-                x.badges.length < 2 &&
-                user.data.weeklyHeadshotPercentage >=
-                  x.data.weeklyHeadshotPercentage
-            )
-          ) {
-            console.log({ user: user.username, badge });
-            user.badges.push(badge);
-          }
-          break;
-        case Badge.shield:
-          if (
-            mappedUsers.every(
-              (x: mappedWeeklyUser) =>
-                x.badges.length < 2 &&
-                user.data.weeklyDamageTaken / user.data.weeklyMatchesPlayed >=
-                  x.data.weeklyDamageTaken / x.data.weeklyMatchesPlayed
-            )
-          ) {
-            console.log({ user: user.username, badge });
-            user.badges.push(badge);
-          }
-          break;
-        case Badge.martyr:
-          if (
-            mappedUsers.every(
-              (x: mappedWeeklyUser) =>
-                x.badges.length < 2 &&
-                user.data.weeklyDamageDone / user.data.weeklyMatchesPlayed >=
-                  x.data.weeklyDamageDone / x.data.weeklyMatchesPlayed
-            )
-          ) {
-            console.log({ user: user.username, badge });
-            user.badges.push(badge);
-          }
-          break;
-        case Badge.traveler:
-          if (
-            mappedUsers.every(
-              (x: mappedWeeklyUser) =>
-                x.badges.length < 2 &&
-                user.data.weeklyDistanceTraveled /
-                  user.data.weeklyMatchesPlayed >=
-                  x.data.weeklyDistanceTraveled / x.data.weeklyMatchesPlayed
-            )
-          ) {
-            console.log({ user: user.username, badge });
-            user.badges.push(badge);
-          }
-          break;
-      }
-    });
-  });
-
-  return mappedUsers
-    .concat(deletedUsersFromList)
-    .sort(
-      (a: mappedWeeklyUser, b: mappedWeeklyUser) =>
-        b.data.weeklyKdRatio - a.data.weeklyKdRatio
-    );
+  return userBadgeMapper(mappedUsers);
 };
 
 export const lifetimeDataMapper = (users: User[]) => {
