@@ -3,7 +3,7 @@ import ReactCardFlip from "react-card-flip";
 import FrontSideCard from "./FrontSideCard";
 import BackSideCard from "./BackSideCard";
 
-const Card = ({ user, timeout }: any) => {
+const Card = ({ user, timeout, lifetimeUser }: any) => {
   const [isFlipped, setIsFlipped] = useState<boolean>(true);
 
   useEffect(() => {

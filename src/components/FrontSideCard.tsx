@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useState } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import withStyles from "@material-ui/styles/withStyles";
 import { Badge } from "../types/types";
@@ -73,32 +72,32 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
           alt="..."
         />
       </div>
+
       <div className={`${!user.data.weeklyDamageDone ? "lifetime" : ""} kd`}>
         <h1>
           {user.data.weeklyKdRatio?.toFixed(2) ||
             user.data.lifetimeKdRatio?.toFixed(2)}
           {user.data.weeklyDamageDone ? (
-            user.data.weeklyKdRatio > user.data.lifetimeKdRatio ? (
-              <Image
-                className="kd-arrow"
-                width="20"
-                height="20"
-                src={`/arrow-up.png`}
-              />
+            user.positiveWeeklyKD === true ? (
+              <div className="kd-arrow">
+                <Image width="20" height="20" src={`/arrow-up.png`} />
+              </div>
             ) : (
-              <Image
-                className="kd-arrow"
-                width="20"
-                height="20"
-                objectFit={"contain"}
-                src={`/arrow-down.png`}
-              />
+              <div className="kd-arrow">
+                <Image
+                  width="20"
+                  height="20"
+                  objectFit={"contain"}
+                  src={`/arrow-down.png`}
+                />
+              </div>
             )
           ) : null}
         </h1>
+
         <div className="kd-text">K/D</div>
       </div>
-
+      {console.log(user.username, user.positiveWeeklyKD)}
       {!isFlipped &&
         user.badges?.map((badge: string) => {
           return (
