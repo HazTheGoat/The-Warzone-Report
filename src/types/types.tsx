@@ -34,6 +34,8 @@ export interface WeeklyStats {
   weeklyAssists: number;
   weeklyDistanceTraveled: number;
   weeklyDeaths: number;
+  weeklyLosses: number;
+  weeklyKills: number;
 }
 
 export interface mappedWeeklyUser {
