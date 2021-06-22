@@ -70,6 +70,7 @@ export const warzoneDataMapper = (data: any, user: any) => {
     },
     username: user.name,
     avatar: user.avatar,
+    dateOfBirth: user.dateOfBirth,
   };
 
   return mappedData;

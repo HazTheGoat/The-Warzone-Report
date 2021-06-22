@@ -8,6 +8,7 @@ export interface User {
   avatar: string;
   weekly: WeeklyStats;
   lifetime: LifetimeStats;
+  dateOfBirth: string;
 }
 
 export interface LifetimeStats {
