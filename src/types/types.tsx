@@ -39,7 +39,7 @@ export interface mappedWeeklyUser {
   data: WeeklyStats;
   username: string;
   avatar: string;
-  positiveWeeklyKD: boolean;
+  weeklyKdRatioTrend: number;
   rank: string;
   badges: string[];
 }

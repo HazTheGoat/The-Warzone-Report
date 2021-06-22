@@ -8,8 +8,12 @@ export const weeklyDataMapper = (users: User[]) => {
       data: user.weekly,
       username: user.username,
       avatar: user.avatar,
-      positiveWeeklyKD:
-        user.weekly.weeklyKdRatio > user.lifetime.lifetimeKdRatio,
+      weeklyKdRatioTrend:
+        user.weekly.weeklyKdRatio === user.lifetime.lifetimeKdRatio
+          ? 0
+          : user.weekly.weeklyKdRatio > user.lifetime.lifetimeKdRatio
+          ? 1
+          : -1,
       rank: getRank(user.weekly.weeklyKdRatio),
       badges: [],
     })

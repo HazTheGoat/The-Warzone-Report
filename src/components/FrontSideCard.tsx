@@ -77,12 +77,12 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
         <h1>
           {user.data.weeklyKdRatio?.toFixed(2) ||
             user.data.lifetimeKdRatio?.toFixed(2)}
-          {user.data.weeklyDamageDone ? (
-            user.positiveWeeklyKD === true ? (
+          {user.weeklyKdRatioTrend ? (
+            user.weeklyKdRatioTrend > 0 ? (
               <div className="kd-arrow">
                 <Image width="20" height="20" src={`/arrow-up.png`} />
               </div>
-            ) : (
+            ) : user.weeklyKdRatioTrend < 0 ? (
               <div className="kd-arrow">
                 <Image
                   width="20"
@@ -91,13 +91,13 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
                   src={`/arrow-down.png`}
                 />
               </div>
-            )
+            ) : null
           ) : null}
         </h1>
 
         <div className="kd-text">K/D</div>
       </div>
-      {console.log(user.username, user.positiveWeeklyKD)}
+
       {!isFlipped &&
         user.badges?.map((badge: string) => {
           return (
