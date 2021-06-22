@@ -62,6 +62,18 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
 
   return (
     <div className={`apex-card ${user.rank}`} onClick={clickHandler}>
+      {user.username === "Superkriss" ? (
+        <div className="crown">
+          <Image
+            width="136"
+            height="116"
+            layout={"fixed"}
+            objectFit={"contain"}
+            src={`/crown.png`}
+            alt="..."
+          />
+        </div>
+      ) : null}
       <div className="avatar">
         <Image
           width="160"

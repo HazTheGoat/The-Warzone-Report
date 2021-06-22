@@ -473,3 +473,7 @@ a:hover {
   filter: blur(30px);
   opacity: 0.7;
 }
+
+.crown {
+	position: absolute;
+}
