@@ -7,7 +7,7 @@ const BackSideCard = ({ user, clickHandler }: any) => {
           {user.data.weeklyHeadshotPercentage ? (
             <div className="stats-box">
               <div>
-                {(user.data.weeklyHeadshotPercentage * 100).toFixed(1)}%{" "}
+                {(user.data.weeklyHeadshotPercentage * 100).toFixed(1)}%
               </div>
               <div>Headshot</div>
             </div>
@@ -22,14 +22,13 @@ const BackSideCard = ({ user, clickHandler }: any) => {
               <div>Damage taken</div>
             </div>
           ) : null}
-          <div className="stats-box">
-            <div>DATA</div>
-            <div>TBD</div>
-          </div>
-          <div className="stats-box">
-            <div>DATA</div>
-            <div>TBD</div>
-          </div>
+
+          {user.data.weeklyAssists ? (
+            <div className="stats-box">
+              <div>{user.data.weeklyAssists}</div>
+              <div>Assist</div>
+            </div>
+          ) : null}
         </div>
         <div className="back-right-stats">
           {user.data.weeklyAvgLifeTime ? (
@@ -44,14 +43,12 @@ const BackSideCard = ({ user, clickHandler }: any) => {
               <div>Wallbangs</div>
             </div>
           ) : null}
-          <div className="stats-box">
-            <div>DATA</div>
-            <div>TBD</div>
-          </div>
-          <div className="stats-box">
-            <div>DATA</div>
-            <div>TBD</div>
-          </div>
+          {user.data.weeklyKills ? (
+            <div className="stats-box">
+              <div>{user.data.weeklyKills}</div>
+              <div>Kills</div>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

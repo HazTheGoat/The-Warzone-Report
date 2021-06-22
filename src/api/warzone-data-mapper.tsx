@@ -22,6 +22,9 @@ export const warzoneDataMapper = (data: any, user: any) => {
             assists: weeklyAssists,
             deaths: weeklyDeaths,
             losses: weeklyLosses,
+            kills: weeklyKills,
+            wlratio: weeklyWinRatio,
+            rank: weeklyRank,
           },
         },
       },
@@ -59,6 +62,8 @@ export const warzoneDataMapper = (data: any, user: any) => {
       weeklyAssists,
       weeklyDistanceTraveled,
       weeklyDeaths,
+      weeklyLosses,
+      weeklyKills,
     },
     lifetime: {
       lifetimeKdRatio,
@@ -71,6 +76,7 @@ export const warzoneDataMapper = (data: any, user: any) => {
     username: user.name,
     avatar: user.avatar,
   };
+  console.log(data.lifetime.mode.br_all);
 
   return mappedData;
 };
