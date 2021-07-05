@@ -9,9 +9,23 @@ import {
   shieldText,
   travelerText,
 } from "../constants/badge-text";
+import moment from "moment";
+import { useEffect, useState } from "react";
 
 const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
   // console.log("USER: ", user.badges);
+  const [userHasBirthday, setUserHasBirthday] = useState<boolean>(false);
+
+  useEffect(() => {
+    const today = moment(new Date());
+    const userDateOfBirth = moment(user.dateOfBirth);
+    const birthdayWeekTest =
+      today.date() === userDateOfBirth.date() &&
+      today.month() === userDateOfBirth.month();
+
+    setUserHasBirthday(birthdayWeekTest);
+  }, []);
+
   const getBadgeColor = (badge: string) => {
     switch (badge) {
       case Badge.shield:
@@ -60,9 +74,11 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
     },
   }))(Tooltip);
 
+  //console.log("user.date", user.dateOfBirth);
+
   return (
     <div className={`apex-card ${user.rank}`} onClick={clickHandler}>
-      {user.username === "Superkriss" ? (
+      {userHasBirthday ? (
         <div className="crown">
           <Image
             width="136"
@@ -84,7 +100,6 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
           alt="..."
         />
       </div>
-
       <div className={`${!user.data.weeklyDamageDone ? "lifetime" : ""} kd`}>
         <h1>
           {user.data.weeklyKdRatio?.toFixed(2) ||
@@ -109,7 +124,6 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
 
         <div className="kd-text">K/D</div>
       </div>
-
       {!isFlipped &&
         user.badges?.map((badge: string) => {
           return (
@@ -137,7 +151,6 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
             </div>
           );
         })}
-
       {user.data.weeklyDamageDone ? (
         <div className="dmg-pr-game">
           <h2>

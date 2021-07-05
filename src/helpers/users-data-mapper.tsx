@@ -8,6 +8,7 @@ export const weeklyDataMapper = (users: User[]) => {
       data: user.weekly,
       username: user.username,
       avatar: user.avatar,
+      dateOfBirth: user.dateOfBirth,
       weeklyKdRatioTrend:
         user.weekly.weeklyKdRatio === user.lifetime.lifetimeKdRatio
           ? 0
@@ -31,6 +32,7 @@ export const lifetimeDataMapper = (users: User[]) => {
     .map((user: User, i: number) => ({
       data: user.lifetime,
       username: user.username,
+      dateOfBirth: user.dateOfBirth,
       avatar: user.avatar,
       rank: getRank(user.lifetime.lifetimeKdRatio),
     }));

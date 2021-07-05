@@ -62,6 +62,7 @@ body {
   background-image: url(../public/cards/challenger.png);
 }
 .god {
+  color: #fff;
   background-image: url(../public/cards/god.png);
 }
 
