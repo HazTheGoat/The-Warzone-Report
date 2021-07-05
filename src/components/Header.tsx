@@ -11,7 +11,7 @@ const PageHeader = ({ clickHandler, hideJosef }: any) => {
         <span className="flicker-fast">e</span>po
         <span className="flicker-very-slow">r</span>t
       </h1>
-      <div className="help">
+      {/* <div className="help">
         <a className="neon-button" onClick={clickHandler}>
           {hideJosef ? (
             <>
@@ -29,7 +29,7 @@ const PageHeader = ({ clickHandler, hideJosef }: any) => {
             </>
           )}
         </a>
-      </div>
+      </div> */}
     </div>
   );
 };

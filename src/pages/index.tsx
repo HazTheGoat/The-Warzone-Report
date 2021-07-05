@@ -44,8 +44,6 @@ const Home = ({ fetchedUsers }: any) => {
 
   return (
     <>
-      {console.log(users)}
-
       <PageHeader
         clickHandler={hideJosefHandler}
         hideJosef={hideJosef}
@@ -65,6 +63,7 @@ const Home = ({ fetchedUsers }: any) => {
           </ScrollContainer>
         </div>
       </div>
+
     </>
   );
 };

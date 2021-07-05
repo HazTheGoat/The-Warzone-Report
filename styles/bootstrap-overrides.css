@@ -475,5 +475,100 @@ a:hover {
 }
 
 .crown {
-	position: absolute;
+  position: absolute;
+}
+
+/******************************* 
+    HOMEPAGE STYLE  
+******************************/
+
+/* HEADER */
+
+.home-header-section {
+  display: flex;
+  height: 250px;
+}
+
+.home-logo-section {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.home-header-section h1 {
+  font-size: 40px;
+}
+
+.navigation-section {
+  margin-left: 80%;
+}
+
+.navigation-bar {
+  display: flex;
+  right: 10%;
+  list-style: none;
+  color: white;
+}
+
+.navigation-section li {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 30px 50px 0px 0px;
+  cursor: pointer;
+}
+
+/* TOP SECTION */
+
+.top-section-content {
+  display: flex;
+  height: 500px;
+}
+
+.top-text-section {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 600px;
+  margin-left: 15%;
+}
+
+.top-text-header {
+  width: 500px;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  margin-left: 55px;
+}
+
+.top-text-box {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  position: relative;
+  margin: 15px 100px;
+  width: 400px;
+  text-align: center;
+  color: white;
+}
+
+.recruit-button {
+  width: 140px;
+  height: 45px;
+  border-radius: 5px;
+  border: 0;
+  background-color: #42dcdb;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 20px 0px 0px 220px;
+}
+
+/* MIDDLE SECTION */
+
+.middle-section {
+  height: 1000px;
+  background-color: #273036;
+  /* background: url(/public/testwave.svg); */
 }
