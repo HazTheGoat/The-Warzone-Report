@@ -42,6 +42,8 @@ const Home = ({ fetchedUsers }: any) => {
     setHideJosef((prevState) => !prevState);
   };
 
+  console.log(weeklyUser);
+
   return (
     <>
       <PageHeader
@@ -63,7 +65,6 @@ const Home = ({ fetchedUsers }: any) => {
           </ScrollContainer>
         </div>
       </div>
-
     </>
   );
 };

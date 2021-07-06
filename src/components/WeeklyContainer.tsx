@@ -12,6 +12,7 @@ const WeeklyContainer = ({ users }: any) => {
 
       {users.map((user: User, index: number) => (
         <div key={index}>
+          {console.log(user)}
           <Card user={user} timeout={getTimeout(index)} />
         </div>
       ))}

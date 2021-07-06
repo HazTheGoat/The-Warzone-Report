@@ -6,12 +6,14 @@ const PageHeader = ({ clickHandler, hideJosef }: any) => {
           We can help you set up your very own
         </a>
       </div> */}
-      <h1 className="mb-4 neon neon-header neon-teal" data-text="U">
-        The W<span className="flicker-slow t">a</span>rzone R
-        <span className="flicker-fast">e</span>po
-        <span className="flicker-very-slow">r</span>t
-      </h1>
-      {/* <div className="help">
+      <a href="home">
+        <h1 className="mb-4 neon neon-header neon-teal" data-text="U">
+          The W<span className="flicker-slow t">a</span>rzone R
+          <span className="flicker-fast">e</span>po
+          <span className="flicker-very-slow">r</span>t
+        </h1>
+      </a>
+      <div className="help">
         <a className="neon-button" onClick={clickHandler}>
           {hideJosef ? (
             <>
@@ -29,7 +31,7 @@ const PageHeader = ({ clickHandler, hideJosef }: any) => {
             </>
           )}
         </a>
-      </div> */}
+      </div>
     </div>
   );
 };

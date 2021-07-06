@@ -92,8 +92,8 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
       ) : null}
       <div className="avatar">
         <Image
-          width="160"
-          height="250"
+          width="140"
+          height="230"
           layout={"fixed"}
           objectFit={"contain"}
           src={`/avatar-pictures/${user.avatar}.png`}

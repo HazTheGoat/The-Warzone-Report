@@ -8,14 +8,18 @@ body {
   background-color: #121212;
 }
 
+a {
+  text-decoration: none;
+}
+
 .apex-card {
   background-size: contain;
   background-repeat: no-repeat;
   border-radius: 20px;
   margin: 5px;
   padding: 10px;
-  width: 400px;
-  height: 560px;
+  width: 350px;
+  height: 490px;
   position: relative;
   cursor: pointer;
 }
@@ -107,8 +111,8 @@ body {
 .kd {
   position: absolute;
   width: 110px;
-  top: 110px;
-  left: 80px;
+  top: 90px;
+  left: 60px;
 }
 
 .kd.lifetime {
@@ -116,30 +120,32 @@ body {
 }
 .kd h1 {
   margin-bottom: 0;
+  font-size: 35px;
 }
 
 .kd-arrow {
-  padding-left: 8px;
+  padding-left: 6px;
   position: relative;
   display: inline-block;
 }
 
 .kd-text {
-  font-size: 24px;
+  font-size: 22px;
   padding-left: 15px;
   font-weight: bolder;
 }
 .dmg-pr-game {
   position: absolute;
-  top: 210px;
-  left: 64px;
+  top: 185px;
+  left: 50px;
   text-align: center;
 }
 .dmg-pr-game h2 {
   margin-bottom: 0;
+  font-size: 30px;
 }
 .dmg-pr-game-text {
-  font-size: 19px;
+  font-size: 17px;
   text-align: center;
   font-weight: bolder;
 }
@@ -185,16 +191,16 @@ body {
 
 .username {
   position: absolute;
-  top: 296px;
+  top: 260px;
   left: 50%;
-  font-size: 32px;
+  font-size: 26px;
   transform: translateX(-50%);
   font-weight: 500;
 }
 .avatar {
   position: absolute;
   top: 60px;
-  right: 70px;
+  right: 65px;
 }
 
 .stats {
@@ -204,17 +210,19 @@ body {
   font-weight: 500;
 }
 .left-stats {
-  left: 90px;
+  left: 70px;
+  top: 305px;
 }
 .right-stats {
-  right: 60px;
+  right: 40px;
   text-align: start;
   width: 120px;
+  top: 305px;
 }
 .rank {
   position: absolute;
   left: 50%;
-  top: 430px;
+  top: 375px;
   transform: translateX(-50%);
   text-transform: uppercase;
   font-weight: bolder;
@@ -259,9 +267,9 @@ svg {
 .backside-card-body {
   width: 280px;
   position: absolute;
-  left: 60px;
+  left: 36px;
   top: 130px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   display: flex;
 }
@@ -485,91 +493,63 @@ a:hover {
 
 /* HEADER */
 
-.home-header-section {
-  display: flex;
-  height: 250px;
-}
-
 .home-logo-section {
-  margin: 0;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
+  margin-bottom: 60px;
 }
 
-.home-header-section h1 {
+.home-logo-section h1 {
   font-size: 40px;
+  padding-bottom: 20px;
 }
 
-.navigation-section {
-  margin-left: 80%;
+.demo-button {
+  font-size: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.navigation-bar {
-  display: flex;
-  right: 10%;
-  list-style: none;
-  color: white;
-}
-
-.navigation-section li {
-  font-size: 15px;
-  font-weight: 500;
-  margin: 30px 50px 0px 0px;
-  cursor: pointer;
+.recruit-button {
+  left: 50%;
+  top: 80%;
+  transform: translate(-50%, -50%);
 }
 
 /* TOP SECTION */
 
-.top-section-content {
-  display: flex;
-  height: 500px;
+.left-box-heading {
+  font-size: 30px;
+  font-weight: 300;
+}
+.bold {
+  font-weight: 600;
+  color: #42dcdb;
 }
 
-.top-text-section {
-  display: flex;
-  flex-direction: column;
-  width: 600px;
-  height: 600px;
-  margin-left: 15%;
-}
-
-.top-text-header {
-  width: 500px;
-  font-size: 20px;
-  font-weight: 500;
-  color: white;
+.left-text-container {
   text-align: center;
-  margin-left: 55px;
+  width: 600px;
+  color: white;
 }
 
 .top-text-box {
-  display: flex;
-  flex-direction: column;
-  font-size: 15px;
-  position: relative;
-  margin: 15px 100px;
-  width: 400px;
-  text-align: center;
-  color: white;
+  font-size: 20px;
+  font-weight: 300;
+  margin-top: 20px;
+  max-width: 350px;
+  vertical-align: middle;
 }
 
-.recruit-button {
-  width: 140px;
-  height: 45px;
-  border-radius: 5px;
-  border: 0;
+.right-text-container {
+  width: 600px;
   background-color: #42dcdb;
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
-  margin: 20px 0px 0px 220px;
 }
 
 /* MIDDLE SECTION */
 
 .middle-section {
-  height: 1000px;
+  background-image: url(../public/wave.svg);
+  background-repeat: no-repeat;
   background-color: #273036;
-  /* background: url(/public/testwave.svg); */
+  height: 700px;
+  margin-top: -2px;
 }
