@@ -6,7 +6,7 @@ const PageHeader = ({ clickHandler, hideJosef }: any) => {
           We can help you set up your very own
         </a>
       </div> */}
-      <a href="home">
+      <a href="/">
         <h1 className="mb-4 neon neon-header neon-teal" data-text="U">
           The W<span className="flicker-slow t">a</span>rzone R
           <span className="flicker-fast">e</span>po
