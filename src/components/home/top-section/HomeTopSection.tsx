@@ -21,7 +21,7 @@ const HomeTopSection = () => {
             <div className="top-text-box">
               <span>
                 CHOOSE BETWEEN A WIDE VARIETY OF
-                <span className="bold">EXCLUSIVE CARDS</span>
+                <span className="bold"> EXCLUSIVE CARDS</span>
               </span>
             </div>
             <div className="top-text-box">
