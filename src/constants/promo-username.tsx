@@ -1,4 +1,4 @@
-export const users = [
+export const promoUsers = [
   {
     avatar: "HazTheGoat",
     badges: ["pitbull"],

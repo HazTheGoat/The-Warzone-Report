@@ -2,7 +2,7 @@ import { Button, Grid } from "@material-ui/core";
 import { Container } from "@material-ui/core";
 import React from "react";
 import Card from "../../card";
-import { users } from "../../../constants/promo-username";
+import { promoUsers } from "../../../constants/promo-username";
 
 const HomeTopSection = () => {
   const getTimeout = (index: number) => {
@@ -39,7 +39,7 @@ const HomeTopSection = () => {
         </Container>
       </Grid>
       <Grid container justify="center">
-        {users.map((user, index: number) => (
+        {promoUsers.map((user, index: number) => (
           <div key={index}>
             <Card user={user} timeout={getTimeout(index)} />
           </div>
