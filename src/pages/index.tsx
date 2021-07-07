@@ -2,6 +2,7 @@ import React from "react";
 import HomeTopSection from "../components/home/top-section/HomeTopSection";
 import { Button, Container } from "@material-ui/core";
 import HomePageHeader from "../components/home/header/HomePageHeader";
+import Footer from "../components/home/footer/Footer";
 
 const Home = () => {
   // const theme = createTheme({
@@ -38,7 +39,11 @@ const Home = () => {
           </Container>
         </Container>
       </div>
-      <div className="middle-section"></div>
+      <div>
+        <Container className="footer-container">
+          <Footer />
+        </Container>
+      </div>
     </>
   );
 };
