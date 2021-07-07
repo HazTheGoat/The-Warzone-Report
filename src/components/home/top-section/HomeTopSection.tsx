@@ -45,7 +45,7 @@ const HomeTopSection = () => {
           </div>
         ))}
       </Grid>
-      <Grid lg={12} justify="center">
+      <Grid container lg={12} alignItems="center">
         <Button
           className="recruit-button"
           variant="contained"

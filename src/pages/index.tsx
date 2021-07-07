@@ -1,7 +1,7 @@
 import React from "react";
-import PageHeader from "../components/Header";
 import HomeTopSection from "../components/home/top-section/HomeTopSection";
 import { Button, Container } from "@material-ui/core";
+import HomePageHeader from "../components/home/header/HomePageHeader";
 
 const Home = () => {
   // const theme = createTheme({
@@ -22,7 +22,7 @@ const Home = () => {
       <div className="top-section">
         <Container maxWidth="xl">
           <div className="home-logo-section">
-            <PageHeader />
+            <HomePageHeader />
             <Button
               className="demo-button"
               variant="contained"
@@ -38,11 +38,7 @@ const Home = () => {
           </Container>
         </Container>
       </div>
-      <div className="middle-section">
-        <Container>
-          <div></div>
-        </Container>
-      </div>
+      <div className="middle-section"></div>
     </>
   );
 };

@@ -355,6 +355,16 @@ a:hover {
   font-size: 48px;
   letter-spacing: 18px;
 }
+.neon-sub-header {
+  font-family: "Monoton", cursive;
+  font-size: 25px;
+  letter-spacing: 8px;
+}
+.neon-contact {
+  font-family: "Monoton", cursive;
+  font-size: 25px;
+  letter-spacing: 8px;
+}
 
 .neon {
   margin-bottom: 20px;

@@ -23,7 +23,7 @@ export const promoUsers = [
     dateOfBirth: "1985-01-02",
   },
   {
-    avatar: "SuperKriss",
+    avatar: "Josef",
     badges: ["martyr"],
     data: {
       gulagKills: 44,
