@@ -1,51 +1,95 @@
-import React from "react";
-import HomeTopSection from "../components/home/top-section/HomeTopSection";
-import { Button, Container } from "@material-ui/core";
-import HomePageHeader from "../components/home/header/HomePageHeader";
-import Footer from "../components/home/footer/Footer";
+import { useEffect, useState } from "react";
+import ScrollContainer from "react-indiana-drag-scroll";
+import { mappedLifetimeUser, mappedWeeklyUser, User } from "../types/types";
+import { usersToFetch } from "../constants/username";
+import PageHeader from "../components/Header";
+import WeeklyContainer from "../components/WeeklyContainer";
+import LifetimeContainer from "../components/LifetimeContainer";
+import { warzoneDataMapper } from "../api/warzone-data-mapper";
+import {
+  weeklyDataMapper,
+  lifetimeDataMapper,
+} from "../helpers/users-data-mapper";
 
-const Home = () => {
-  // const theme = createTheme({
-  //   overrides: {
-  //     // Style sheet name ⚛️
-  //     MuiButton: {
-  //       // Name of the rule
-  //       text: {
-  //         // Some CSS
-  //         color: "white",
-  //       },
-  //     },
-  //   },
-  // });
+const Home = ({ fetchedUsers }: any) => {
+  const [users, setUsers] = useState<User[]>([]);
+  const [hideJosef, setHideJosef] = useState<boolean>(false);
+  const [weeklyUser, setWeeklyUser] = useState<mappedWeeklyUser[]>([]);
+  const [lifetimeUser, setLifetimeUser] = useState<mappedLifetimeUser[]>([]);
+
+  useEffect(() => {
+    setUsers(JSON.parse(fetchedUsers));
+  }, []);
+
+  useEffect(() => {
+    const mappedWeeklyUsers = weeklyDataMapper(users);
+    const mappedLifetimeUsers = lifetimeDataMapper(users);
+
+    setWeeklyUser(mappedWeeklyUsers);
+    setLifetimeUser(mappedLifetimeUsers);
+  }, [users]);
+
+  useEffect(() => {
+    const usersWithoutJosef = [...users].filter((x) => x.username !== "Josef");
+    const mappedWeeklyUsers = weeklyDataMapper(
+      hideJosef ? usersWithoutJosef : users
+    );
+
+    setWeeklyUser(mappedWeeklyUsers);
+  }, [hideJosef]);
+
+  const hideJosefHandler = () => {
+    setHideJosef((prevState) => !prevState);
+  };
+
+  console.log(weeklyUser);
 
   return (
     <>
-      <div className="top-section">
-        <Container maxWidth="xl">
-          <div className="home-logo-section">
-            <HomePageHeader />
-            <Button
-              className="demo-button"
-              variant="contained"
-              color="secondary"
-              size="large"
-              href="demo"
-            >
-              VIEW DEMO
-            </Button>
-          </div>
-          <Container maxWidth="xl">
-            <HomeTopSection />
-          </Container>
-        </Container>
+      <PageHeader
+        clickHandler={hideJosefHandler}
+        hideJosef={hideJosef}
+      ></PageHeader>
+      <div className="container-fluid container-bottom-half">
+        <div>
+          <ScrollContainer className="scroll-container">
+            <WeeklyContainer users={weeklyUser}></WeeklyContainer>
+          </ScrollContainer>
+        </div>
       </div>
-      <div>
-        <Container className="footer-container">
-          <Footer />
-        </Container>
+
+      <div className="container-fluid container-top-half">
+        <div>
+          <ScrollContainer className="scroll-container">
+            <LifetimeContainer users={lifetimeUser}></LifetimeContainer>
+          </ScrollContainer>
+        </div>
       </div>
     </>
   );
 };
+
+export async function getStaticProps() {
+  const API = require("call-of-duty-api")({ platform: "battle" });
+  await API.login(process.env.BATTLE_USERNAME, process.env.BATTLE_PW);
+
+  const mappedUsers = await usersToFetch.map(async (user) => {
+    try {
+      let data = await API.MWwz(user.username, user.platform);
+      return warzoneDataMapper(data, user);
+    } catch (error) {}
+  });
+
+  const fetchedUsersAsJSON = await Promise.all(mappedUsers).then((x) => {
+    return JSON.stringify(x.filter((user) => user));
+  });
+
+  return {
+    props: {
+      fetchedUsers: fetchedUsersAsJSON,
+    },
+    revalidate: 1800,
+  };
+}
 
 export default Home;
