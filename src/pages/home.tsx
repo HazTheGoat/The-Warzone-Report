@@ -29,7 +29,7 @@ const Home = () => {
               variant="contained"
               color="secondary"
               size="large"
-              href="demo"
+              href="/"
             >
               VIEW DEMO
             </Button>

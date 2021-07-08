@@ -13,7 +13,6 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 
 const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
-  // console.log("USER: ", user.badges);
   const [userHasBirthday, setUserHasBirthday] = useState<boolean>(false);
 
   useEffect(() => {
@@ -73,8 +72,6 @@ const FrontSideCard = ({ user, clickHandler, isFlipped }: any) => {
       padding: 15,
     },
   }))(Tooltip);
-
-  //console.log("user.date", user.dateOfBirth);
 
   return (
     <div className={`apex-card ${user.rank}`} onClick={clickHandler}>

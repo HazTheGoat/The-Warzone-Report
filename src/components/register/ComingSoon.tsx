@@ -16,7 +16,7 @@ const PlaceholderComingSoon = () => {
           </a>
         </h1>
       </div>
-      <a href="/">
+      <a href="/home">
         <h4 className="mt-5 neon neon-sub-header neon-red flicker-fast">
           HEAD BACK
         </h4>

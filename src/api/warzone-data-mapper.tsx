@@ -77,7 +77,6 @@ export const warzoneDataMapper = (data: any, user: any) => {
     avatar: user.avatar,
     dateOfBirth: user.dateOfBirth,
   };
-  console.log(data.lifetime.mode.br_all);
 
   return mappedData;
 };

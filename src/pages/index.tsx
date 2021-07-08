@@ -42,8 +42,6 @@ const Home = ({ fetchedUsers }: any) => {
     setHideJosef((prevState) => !prevState);
   };
 
-  console.log(weeklyUser);
-
   return (
     <>
       <PageHeader
