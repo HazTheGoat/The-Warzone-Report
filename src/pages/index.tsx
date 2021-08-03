@@ -69,7 +69,8 @@ const Home = ({ fetchedUsers }: any) => {
 
 export async function getStaticProps() {
   const API = require("call-of-duty-api")({ platform: "battle" });
-  await API.login(process.env.BATTLE_USERNAME, process.env.BATTLE_PW);
+
+  await API.loginWithSSO(process.env.BATTLE_ACT_SSO_COOKIE);
 
   const mappedUsers = await usersToFetch.map(async (user) => {
     try {

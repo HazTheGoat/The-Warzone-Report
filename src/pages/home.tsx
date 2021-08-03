@@ -5,19 +5,6 @@ import HomePageHeader from "../components/home/header/HomePageHeader";
 import Footer from "../components/home/footer/Footer";
 
 const Home = () => {
-  // const theme = createTheme({
-  //   overrides: {
-  //     // Style sheet name ⚛️
-  //     MuiButton: {
-  //       // Name of the rule
-  //       text: {
-  //         // Some CSS
-  //         color: "white",
-  //       },
-  //     },
-  //   },
-  // });
-
   return (
     <>
       <div className="top-section">

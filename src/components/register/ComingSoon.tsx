@@ -1,3 +1,5 @@
+import React from "react";
+import Link from "next/link";
 const PlaceholderComingSoon = () => {
   return (
     <div className="text-center page-header mt-4 ">
@@ -16,11 +18,13 @@ const PlaceholderComingSoon = () => {
           </a>
         </h1>
       </div>
-      <a href="/home">
-        <h4 className="mt-5 neon neon-sub-header neon-red flicker-fast">
-          HEAD BACK
-        </h4>
-      </a>
+      <Link href="home">
+        <a>
+          <h4 className="mt-5 neon neon-sub-header neon-red flicker-fast">
+            HEAD BACK
+          </h4>
+        </a>
+      </Link>
     </div>
   );
 };
